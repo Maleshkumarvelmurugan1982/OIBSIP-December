@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Temperature Converter</title>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        min-height: 100vh;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .container {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 30px;
+        padding: 50px 40px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        max-width: 500px;
+        width: 100%;
+        animation: slideIn 0.6s ease-out;
+    }
+
+    @keyframes slideIn {
+        from {
+            opacity: 0;
+            transform: translateY(-30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    h1 {
+        text-align: center;
+        color: #667eea;
+        margin-bottom: 10px;
+        font-size: 2.5em;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .subtitle {
+        text-align: center;
+        color: #666;
+        margin-bottom: 40px;
+        font-size: 1.1em;
+    }
+
+    .input-group {
+        margin-bottom: 30px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 10px;
+        color: #333;
+        font-weight: 600;
+        font-size: 1.1em;
+    }
+
+    input[type="number"] {
+        width: 100%;
+        padding: 18px;
+        border: 3px solid #e0e0e0;
+        border-radius: 15px;
+        font-size: 1.2em;
+        transition: all 0.3s ease;
+        background: #f9f9f9;
+    }
+
+    input[type="number"]:focus {
+        outline: none;
+        border-color: #667eea;
+        background: white;
+        box-shadow: 0 0 20px rgba(102, 126, 234, 0.2);
+        transform: translateY(-2px);
+    }
+
+    .radio-group {
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
+    }
+
+    .radio-option {
+        flex: 1;
+        min-width: 140px;
+    }
+
+    .radio-option input[type="radio"] {
+        display: none;
+    }
+
+    .radio-option label {
+        display: block;
+        padding: 15px;
+        border: 3px solid #e0e0e0;
+        border-radius: 15px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        background: #f9f9f9;
+        font-weight: 600;
+    }
+
+    .radio-option input[type="radio"]:checked + label {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border-color: #667eea;
+        transform: scale(1.05);
+        box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+    }
+
+    .radio-option label:hover {
+        border-color: #667eea;
+        transform: translateY(-2px);
+    }
+
+    .convert-btn {
+        width: 100%;
+        padding: 20px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border: none;
+        border-radius: 15px;
+        font-size: 1.3em;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-top: 20px;
+        box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+    }
+
+    .convert-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
+    }
+
+    .convert-btn:active {
+        transform: translateY(-1px);
+    }
+
+    .result {
+        margin-top: 40px;
+        padding: 30px;
+        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        border-radius: 20px;
+        text-align: center;
+        min-height: 120px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        box-shadow: 0 10px 30px rgba(245, 87, 108, 0.3);
+        opacity: 0;
+        transform: scale(0.9);
+        transition: all 0.4s ease;
+    }
+
+    .result.show {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    .result-label {
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 1em;
+        margin-bottom: 10px;
+        font-weight: 500;
+    }
+
+    .result-value {
+        color: white;
+        font-size: 3em;
+        font-weight: bold;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .error {
+        color: #f5576c;
+        font-size: 0.9em;
+        margin-top: 5px;
+        display: none;
+    }
+
+    .error.show {
+        display: block;
+        animation: shake 0.5s ease;
+    }
+
+    @keyframes shake {
+        0%, 100% { transform: translateX(0); }
+        25% { transform: translateX(-10px); }
+        75% { transform: translateX(10px); }
+    }
+
+    .thermometer-icon {
+        font-size: 3em;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    @media (max-width: 480px) {
+        .container {
+            padding: 30px 20px;
+        }
+        
+        h1 {
+            font-size: 2em;
+        }
+        
+        .result-value {
+            font-size: 2.5em;
+        }
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <div class="thermometer-icon">🌡️</div>
+    <h1>Temperature Converter</h1>
+    <p class="subtitle">Convert between Celsius, Fahrenheit & Kelvin</p>
+
+    <div class="input-group">
+        <label for="temperature">Enter Temperature</label>
+        <input type="number" id="temperature" placeholder="Enter a number..." step="0.01">
+        <div class="error" id="error">Please enter a valid number!</div>
+    </div>
+
+    <div class="input-group">
+        <label>Select Unit</label>
+        <div class="radio-group">
+            <div class="radio-option">
+                <input type="radio" id="celsius" name="unit" value="celsius" checked>
+                <label for="celsius">°C Celsius</label>
+            </div>
+            <div class="radio-option">
+                <input type="radio" id="fahrenheit" name="unit" value="fahrenheit">
+                <label for="fahrenheit">°F Fahrenheit</label>
+            </div>
+            <div class="radio-option">
+                <input type="radio" id="kelvin" name="unit" value="kelvin">
+                <label for="kelvin">K Kelvin</label>
+            </div>
+        </div>
+    </div>
+
+    <button class="convert-btn" onclick="convertTemperature()">🔥 Convert Now</button>
+
+    <div class="result" id="result">
+        <div class="result-label">Converted Temperature</div>
+        <div class="result-value" id="resultValue">--</div>
+    </div>
+</div>
+
+<script>
+function convertTemperature() {
+    const tempInput = document.getElementById('temperature');
+    const temp = parseFloat(tempInput.value);
+    const error = document.getElementById('error');
+    const result = document.getElementById('result');
+    const resultValue = document.getElementById('resultValue');
+    
+    // Validation
+    if (isNaN(temp) || tempInput.value.trim() === '') {
+        error.classList.add('show');
+        result.classList.remove('show');
+        tempInput.style.borderColor = '#f5576c';
+        return;
+    } else {
+        error.classList.remove('show');
+        tempInput.style.borderColor = '#667eea';
+    }
+    
+    // Get selected unit
+    const selectedUnit = document.querySelector('input[name="unit"]:checked').value;
+    
+    let converted = '';
+    
+    // Conversion logic
+    if (selectedUnit === 'celsius') {
+        const fahrenheit = (temp * 9/5) + 32;
+        const kelvin = temp + 273.15;
+        converted = `${fahrenheit.toFixed(2)}°F | ${kelvin.toFixed(2)}K`;
+    } else if (selectedUnit === 'fahrenheit') {
+        const celsius = (temp - 32) * 5/9;
+        const kelvin = celsius + 273.15;
+        converted = `${celsius.toFixed(2)}°C | ${kelvin.toFixed(2)}K`;
+    } else if (selectedUnit === 'kelvin') {
+        const celsius = temp - 273.15;
+        const fahrenheit = (celsius * 9/5) + 32;
+        converted = `${celsius.toFixed(2)}°C | ${fahrenheit.toFixed(2)}°F`;
+    }
+    
+    // Display result
+    resultValue.textContent = converted;
+    result.classList.add('show');
+}
+
+// Allow Enter key to trigger conversion
+document.getElementById('temperature').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+        convertTemperature();
+    }
+});
+
+// Clear error on input
+document.getElementById('temperature').addEventListener('input', function() {
+    document.getElementById('error').classList.remove('show');
+    this.style.borderColor = '#e0e0e0';
+});
+</script>
+
+</body>
+</html>

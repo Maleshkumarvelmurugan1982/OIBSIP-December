@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Maleshkumar Velmurugan | Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    :root {
+      --main-grad1: #6e81f7;
+      --main-grad2: #ff4c98;
+      --main-light: #ffe5fc;
+      --card-grad1: #e0eaff;
+      --card-grad2: #ffe7f7;
+      --hover-grad1: #c3befd;
+      --hover-grad2: #ffe7f7;
+      --accent: #ff4c98;
+      --head-font: "Segoe UI", "Roboto", Arial, sans-serif;
+    }
+    body {
+      margin: 0;
+      font-family: var(--head-font);
+      background: linear-gradient(120deg,#e5ecfb 0%, var(--main-light) 100%);
+      color: #243050;
+      animation: fadeInBody 2s;
+      overflow-x: hidden;
+    }
+    @keyframes fadeInBody {
+      from {opacity:0}
+      to {opacity:1}
+    }
+    .header {
+      background: linear-gradient(90deg,var(--main-grad1) 0%,var(--main-grad2) 100%);
+      color: white;
+      text-align: center;
+      padding: 56px 20px 24px 20px;
+      border-bottom-left-radius:42px;
+      border-bottom-right-radius:42px;
+      box-shadow:0 7px 36px #efb2fa36, 0 2px 44px #ffbbeb15;
+      position: relative;
+      animation: fadeDownHeader 1.3s;
+    }
+    @keyframes fadeDownHeader {
+      from {transform:translateY(-50px); opacity:0;}
+      to {transform:translateY(0); opacity:1;}
+    }
+    .profile-img {
+      width:120px;
+      height:120px;
+      object-fit: cover;
+      border-radius:50%;
+      border:4px solid #fff;
+      box-shadow: 0 4px 32px #ff4c9811, 0 1px 12px #ffbbeb66;
+      margin-bottom:13px;
+      background:#fff;
+      transition: box-shadow 0.25s, transform 0.25s;
+      animation: floatProfile 2s infinite alternate;
+      display: block;
+      margin-left: auto;
+      margin-right:auto;
+    }
+    @keyframes floatProfile {
+      from {box-shadow: 0 7px 36px #efb2fa36;}
+      to {box-shadow: 0 17px 44px #ffbbeb39; transform: scale(1.04);}
+    }
+    .header h1 {margin:0 0 8px 0; font-size:2.42em; letter-spacing: .05em;
+      background: linear-gradient(90deg,#FFF 20%,#ffe5fc 80%);
+      -webkit-background-clip: text; background-clip: text; color:transparent; text-shadow:0 3px 12px #fc85ce35;
+      animation: gradPulse 4s infinite alternate;
+    }
+    @keyframes gradPulse {
+      0% {background-position: 0%;}
+      100% {background-position: 100%;}
+    }
+    .header h2 {margin:0; font-size:1.16em; font-weight:400; opacity:.97;}
+    .contact { margin-top:15px; font-size:1em; text-align:center;}
+    .contact a { color:#ffe8f8; text-decoration:none; transition:.15s; }
+    .contact a:hover { text-decoration:underline; color:#243050;}
+    .main {
+      max-width:840px;
+      margin:38px auto 22px auto;
+      background:white;
+      border-radius:22px;
+      box-shadow: 0 2px 26px #bebefd3a;
+      padding:42px 8vw;
+      animation: fadeInMain 1.7s;
+      position:relative;
+      z-index:20;
+    }
+    @keyframes fadeInMain {
+      from{transform:translateY(40px); opacity:0;}
+      to{transform:translateY(0); opacity:1;}
+    }
+    section {
+      margin-bottom:38px;
+      animation: fadeUpSection 1.2s;
+      position: relative;
+      z-index: 2;
+    }
+    @keyframes fadeUpSection {
+      from {transform:translateY(40px); opacity:0;}
+      to {transform:translateY(0); opacity:1;}
+    }
+    h3 {
+      font-size:1.37em; margin-bottom:13px; color:var(--main-grad1);
+      background: linear-gradient(90deg,var(--main-grad1),var(--accent));
+      -webkit-background-clip: text; color:transparent; background-clip: text;
+      font-weight:600; letter-spacing:.03em;
+      animation: rainbowTitle 3.6s infinite alternate;
+    }
+    @keyframes rainbowTitle {
+      0% {background-position:0;}
+      100% {background-position:100%;}
+    }
+    .keypoints { display:grid; grid-template-columns:1fr 1fr; gap:17px;}
+    .card {
+      background: linear-gradient(94deg,var(--card-grad1) 80%,var(--card-grad2) 100%);
+      box-shadow:0 2px 12px #c3befd25;
+      border-radius:14px;
+      margin:0 0 12px 0;
+      padding:18px 21px;
+      transition:.23s;
+      margin-bottom:13px;
+      cursor:pointer;
+      position:relative;
+      animation: cardEnter .7s;
+    }
+    @keyframes cardEnter {
+      from {transform:scale(.9) rotateX(-25deg); opacity:.5;}
+      to {transform:scale(1) rotateX(0); opacity:1;}
+    }
+    .card:hover {
+      transform:scale(1.05) translateY(-4px);
+      background: linear-gradient(97deg,var(--hover-grad1) 68%,var(--hover-grad2) 100%);
+      box-shadow: 0 6px 32px #ff4c9837;
+      z-index: 2;
+    }
+    .list-label { font-weight:bold; color:var(--accent);}
+    .tag-list {display:inline-block;padding:0;margin:0;}
+    .tag-list li {
+      display:inline-block; background:#f8e6ff; color:var(--main-grad1);
+      border-radius:7px; padding:4px 13px; margin:3px 8px 3px 0;font-size:.97em;
+      font-weight:600;border:1px solid #d8cafd;
+      box-shadow:0 1px 8px #ff4c9835;
+      animation: tagPop .85s infinite alternate;
+    }
+    @keyframes tagPop {
+      from {transform:scale(1);}
+      to {transform:scale(1.08);}
+    }
+    .timeline { border-left:3px solid var(--main-grad1); padding-left:14px; margin:0; }
+    .timeline li { margin-bottom:17px; position:relative; animation: fadeUpSection 1.1s;}
+    .timeline li:before {
+      content: "";
+      position:absolute; left:-10px; top:8px; width:10px; height:10px;
+      background:var(--accent); border-radius:50%; border:2px solid var(--main-grad1);
+    }
+    .project-title { color:var(--accent);font-weight:700;font-size:1.03em; }
+    .project-stack { font-size:.96em; color:var(--main-grad1);}
+    .lang-list { display:grid; grid-template-columns:repeat(auto-fit,minmax(182px,1fr)); gap:8px;}
+    .lang-list div { background:#f6faff;border-radius:8px; padding:8px 13px;margin:3px 0;box-shadow:0 .5px 7px #ff4c9820; }
+    .highlight { color:var(--accent); font-weight:700;}
+    .cert-card { background:#f6faff; border-radius:7px; padding:7px 15px; margin-bottom:8px; border-left:4px solid var(--main-grad1); box-shadow:0 1px 6px #efb2fa13; animation: cardEnter .93s alternate; }
+    @media (max-width:700px) {
+      .main{padding:14px 2vw;}
+      .keypoints{grid-template-columns:1fr;}
+      .profile-img { width:88px; height:88px; }
+    }
+    .footer {
+      text-align:center; color: #9a85c9; padding:17px; font-size:1.02em; margin-bottom:12px;
+      animation: fadeInFooter 2s;
+    }
+    @keyframes fadeInFooter { from{opacity:0;} to{opacity:1;} }
+    /* Section entrance staggered animation */
+    section { opacity:1; }
+    section:nth-child(2) { animation-delay: .26s;}
+    section:nth-child(3) { animation-delay: .38s;}
+    section:nth-child(4) { animation-delay: .53s;}
+    section:nth-child(5) { animation-delay: .66s;}
+    /* Cool hover for cards */
+    .card:active {transform:scale(0.97);}
+    /* Animated highlight for important lines */
+    .highlight {
+      background: linear-gradient(90deg, #ffe5fc 10%, #ffbbeb 100%);
+      padding:0 4px; border-radius:4px; box-shadow:0 1px 7px #ffe5fc33;
+      animation: highlightPulse 0.95s infinite alternate;
+    }
+    @keyframes highlightPulse {
+      from{background:linear-gradient(90deg, #ffe5fc 10%, #ffbbeb 100%);}
+      to{background:linear-gradient(90deg, #ffbbeb 10%, #ffe5fc 100%);}
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <img src="C:\Users\males\OIBSIP-December\Level 1\Portfolio\download (1).jpg" alt="Profile Photo" class="profile-img">
+    <h1>Maleshkumar Velmurugan</h1>
+    <h2>B.E. Computer Science | Web & IoT Enthusiast</h2>
+    <div class="contact">
+      <div>2, Nadar North Street, Thiruthangal, Sivakasi, Tamil Nadu, India</div>
+      <div>Mobile: <a href="tel:+919942371733">+91 99423 71733</a> · <a href="mailto:malesh26032006@gmail.com">malesh26032006@gmail.com</a></div>
+      <div>
+        <a href="https://www.linkedin.com/in/maleshkumar-v-8311aa333/" target="_blank">LinkedIn</a> · 
+        <a href="https://github.com/Maleshkumarvelmurugan1982" target="_blank">GitHub</a>
+      </div>
+    </div>
+  </div>
+  <div class="main">
+    <section>
+      <h3>About Me</h3>
+      <div class="card" title="About Me">
+        Passionate Computer Science undergraduate at <b>Mepco Schlenk Engineering College</b>. Strong foundations in <span class="highlight">Java</span>, <span class="highlight">Python</span>, Data Structures, and Machine Learning. Interested in Web Design and Embedded IoT systems. Quick learner with a drive for building practical solutions!
+      </div>
+    </section>
+    <section>
+      <h3>Technical Skills</h3>
+      <div class="lang-list">
+        <div><span class="list-label">Languages:</span> C, C++, Java, Python</div>
+        <div><span class="list-label">Web:</span> HTML5, CSS3, JavaScript, PHP</div>
+        <div><span class="list-label">Database:</span> MySQL, MongoDB</div>
+        <div><span class="list-label">Embedded:</span> Arduino, PIC, Embedded C</div>
+        <div><span class="list-label">Version Control:</span> Git</div>
+      </div>
+    </section>
+    <section>
+      <h3>Education</h3>
+      <div class="keypoints">
+        <div class="card" title="Graduation">
+          <b>B.E. Computer Science Engineering</b><br>
+          Mepco Schlenk Engineering College, Sivakasi<br>
+          <span class="highlight">CGPA: 8.2 / 10</span>
+        </div>
+        <div class="card" title="HSC">
+          <b>HSC (12th Standard)</b><br>
+          K.M.K.A. Matric Hr. Sec. School, Thiruthangal<br>
+          <span class="highlight">Percentage: 93%</span>
+        </div>
+      </div>
+    </section>
+    <section>
+      <h3>Certifications</h3>
+      <div class="cert-card" title="AI/ML Internship">AI/ML and Data Science Internship (Python) – YBI Foundation (Aug 2023–Present)</div>
+      <div class="cert-card" title="Oracle Cloud">Oracle Cloud Infrastructure (2025)</div>
+      <div class="cert-card" title="Oracle Redwood">Oracle Redwood Application (2025)</div>
+      <div class="cert-card" title="Oracle Autonomous DB">Oracle Autonomous Database Cloud (2025)</div>
+      <div class="cert-card" title="IEEE Cert">English for Technical Professionals – IEEE (2024)</div>
+      <div class="cert-card" title="CyberSecurity">Introduction to CyberSecurity (2023)</div>
+    </section>
+    <section>
+      <h3>Internships</h3>
+      <ul class="timeline">
+        <li title="Emertxe IoT">
+          <b>Embedded Systems & IoT Intern</b> - Emertxe Information Technologies (May–June 2025, Remote)<br>
+          <span class="project-stack">• PIC microcontrollers • Cloud-based IoT solutions</span>
+        </li>
+        <li title="IIT Madras Research Park">
+          <b>Web Developer Intern</b> - IIT Madras Research Park, Chennai<br>
+          <span class="project-stack">• Academic portals • HTML, CSS, JS</span>
+        </li>
+        <li title="YBI AI/ML">
+          <b>AI/ML & Data Science Intern</b> - YBI Foundation (June–July 2025)<br>
+          <span class="project-stack">• Python • Data preprocessing, ML models, visualizations</span>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h3>Projects</h3>
+      <div class="card" title="Digi-Ration (PHP, MySQL)">
+        <span class="project-title">Digi-Ration</span> (<span class="project-stack">PHP, MySQL</span>): Online access to essential services; includes digital records and authentication system.
+      </div>
+      <div class="card" title="EntreVest (Java, Swing)">
+        <span class="project-title">EntreVest</span> (<span class="project-stack">Java, Swing</span>): Desktop app connecting entrepreneurs and investors, featuring clean UI and efficient data flow.
+      </div>
+      <div class="card" title="Hand Cricket IPL (Java)">
+        <span class="project-title">Hand Cricket – IPL Edition</span> (<span class="project-stack">Java</span>): IPL-themed game with interactive gameplay and logic control.
+      </div>
+      <div class="card" title="Washing Machine Simulation">
+        <span class="project-title">Washing Machine Simulation</span> (<span class="project-stack">PIC, Embedded C</span>): Microcontroller project simulated on Picsimlab using XC8 Compiler.
+      </div>
+      <div class="card" title="Java RPS">
+        <span class="project-title">Rock Paper Scissors</span> (<span class="project-stack">Java OOP</span>): Classic console game with replay functionality.
+      </div>
+      <div class="card" title="Java Tic-Tac-Toe">
+        <span class="project-title">Tic-Tac-Toe</span> (<span class="project-stack">Java</span>): 2-player logic game, improving problem-solving skills.
+      </div>
+    </section>
+    <section>
+      <h3>Languages</h3>
+      <ul class="tag-list">
+        <li>Tamil <b>(Fluent)</b></li>
+        <li>English <b>(Fluent)</b></li>
+        <li>Hindi <b>(Basic)</b></li>
+      </ul>
+    </section>
+    <section>
+      <h3>Area of Interest</h3>
+      <ul class="tag-list">
+        <li>Web Development</li>
+        <li>Embedded Systems & IoT</li>
+        <li>Machine Learning</li>
+        <li>Data Structures</li>
+        <li>Software Development</li>
+      </ul>
+    </section>
+    <section>
+      <h3>Co-curricular Activities</h3>
+      <ul>
+        <li>Lecture: <b>JavaScript and its Applications</b> (intra-college event)</li>
+        <li>Talk: <b>Modernization of Indian Service Sectors</b> at MSEC</li>
+        <li>Lecture: Training ML models for image recognition</li>
+        <li>Talk: <b>Heritage and Culture of India</b> at MSEC</li>
+      </ul>
+    </section>
+  </div>
+  <div class="footer">
+    &copy; 2025 Maleshkumar Velmurugan · Designed for personal portfolio use
+  </div>
+  <!-- Profile image fallback and animations -->
+  <script>
+    // If local image fails, fallback to a placeholder Avatar (online images only show in browser if permitted)
+    document.querySelector('.profile-img').addEventListener('error', function() {
+      this.src = 'https://api.dicebear.com/7.x/pixel-art/svg?seed=MaleshkumarVelmurugan';
+    });
+    // Fade-in cards on scroll
+    let observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(e => {if(e.isIntersecting) e.target.style.opacity='1';});
+      }, {threshold:.3}
+    );
+    document.querySelectorAll('.card').forEach(card => {
+      card.style.opacity='.15';
+      observer.observe(card);
+    });
+    document.querySelectorAll('.cert-card').forEach(card => {
+      card.style.opacity='.12';
+      observer.observe(card);
+    });
+  </script>
+</body>
+</html>

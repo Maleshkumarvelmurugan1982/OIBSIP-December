@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>SMP Crackers Price List</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+    :root{
+        --brand1:#ff9a00;
+        --brand2:#ffbb00;
+        --accent:#d35400;
+        --bg1:#fff9e6;
+        --bg2:#ffe9c4;
+        --card1:#fffaf2;
+        --card2:#fff0d9;
+        --border:#ffd77d;
+        --text:#333;
+        --success:#007400;
+        --dark:#181818;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(to right, var(--bg1), var(--bg2));
+        color: var(--text);
+    }
+
+    /* Floating Navigation Bar */
+    nav {
+        position: fixed;
+        top: 0; left: 0; right: 0;
+        background: linear-gradient(90deg, var(--brand1), var(--brand2));
+        padding: 10px 18px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 1000;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+        backdrop-filter: saturate(120%) blur(6px);
+    }
+    .logo-wrap {
+        display:flex;
+        align-items:center;
+        gap:10px;
+        color:#fff;
+        text-decoration:none;
+    }
+    .logo-img {
+        height: 36px;
+        width: 36px;
+        border-radius: 50%;
+        object-fit: cover;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+        border: 2px solid rgba(255,255,255,0.7);
+        background:#fff;
+    }
+    .logo-text {
+        font-size: 18px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+    }
+    nav ul {
+        list-style: none;
+        display: flex;
+        gap: 12px;
+        margin: 0;
+        padding: 0;
+        flex-wrap: wrap;
+    }
+    nav a {
+        text-decoration: none;
+        color: white;
+        font-weight: 600;
+        padding: 8px 12px;
+        border-radius: 20px;
+        transition: all 0.3s ease;
+    }
+    nav a:hover {
+        background: rgba(255,255,255,0.2);
+        color: #fff;
+        transform: translateY(-1px);
+    }
+
+    /* Header */
+    header {
+        margin-top: 72px; /* space for nav */
+        background: linear-gradient(90deg, var(--brand1), var(--brand2));
+        padding: 34px 20px 44px;
+        text-align: center;
+        color: white;
+        position: relative;
+        overflow: hidden;
+        box-shadow: inset 0 -6px 0 rgba(255,255,255,0.2);
+    }
+    header::after{
+        content:"";
+        position:absolute;
+        inset:0;
+        background-image: radial-gradient(rgba(255,255,255,0.18) 2px, transparent 2px);
+        background-size: 20px 20px;
+        opacity:0.35;
+        pointer-events:none;
+    }
+    .header-logo {
+        height: 84px;
+        width: 84px;
+        border-radius: 50%;
+        object-fit: cover;
+        box-shadow: 0 8px 18px rgba(0,0,0,0.28);
+        border: 3px solid rgba(255,255,255,0.85);
+        background:#fff;
+        display:block;
+        margin: 0 auto 14px;
+    }
+    .header-title {
+        font-size: 42px;
+        font-weight: 800;
+        letter-spacing: 2px;
+        text-shadow: 2px 2px 6px rgba(0,0,0,0.28);
+        margin: 0;
+    }
+
+    /* Hero Section */
+    .hero {
+        padding: 50px 20px;
+        text-align: center;
+        background: linear-gradient(to right, #fff3c4, #ffe0a1);
+        font-size: 20px;
+        font-weight: 500;
+        color: #444;
+        border-bottom: 3px solid var(--brand2);
+    }
+
+    /* Call-to-Action Buttons */
+    .cta-buttons { margin-top: 24px; }
+    .btn {
+        display: inline-block;
+        padding: 12px 22px;
+        margin: 8px;
+        font-size: 17px;
+        font-weight: 700;
+        color: white;
+        background: linear-gradient(45deg, #ff6a00, var(--brand2));
+        border: none;
+        border-radius: 28px;
+        cursor: pointer;
+        text-decoration: none;
+        transition: all 0.35s ease;
+        box-shadow: 0 8px 18px rgba(0,0,0,0.18);
+        position: relative;
+        overflow: hidden;
+    }
+    .btn:hover {
+        transform: translateY(-2px) scale(1.05);
+        background: linear-gradient(45deg, var(--brand2), #ff6a00);
+        box-shadow: 0 12px 22px rgba(0,0,0,0.25);
+    }
+    .btn::after{
+        content:"";
+        position:absolute;
+        top:0; left:-60%;
+        width: 50%;
+        height: 100%;
+        background: linear-gradient(90deg, rgba(255,255,255,0.0), rgba(255,255,255,0.4), rgba(255,255,255,0.0));
+        transform: skewX(-20deg);
+        transition: left 0.6s ease;
+    }
+    .btn:hover::after{ left: 120%; }
+
+    /* Section Titles */
+    h2 {
+        text-align: center;
+        margin: 50px 20px 0;
+        color: var(--accent);
+        font-size: 28px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        position: relative;
+    }
+    h2::after {
+        content: "";
+        display: block;
+        width: 90px;
+        height: 4px;
+        background: var(--brand2);
+        margin: 10px auto 0;
+        border-radius: 2px;
+    }
+
+    /* Category Box */
+    .category {
+        margin: 24px 20px 8px;
+        background: #ffffff;
+        border-radius: 16px;
+        padding: 22px;
+        box-shadow: 0 10px 22px rgba(0,0,0,0.12);
+        transition: transform 0.28s ease, box-shadow 0.28s ease;
+        border: 1px solid rgba(255,186,0,0.25);
+    }
+    .category:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 14px 28px rgba(0,0,0,0.18);
+    }
+
+    /* Item Grid */
+    .item-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 18px;
+        margin-top: 18px;
+    }
+
+    /* Item Cards */
+    .item {
+        background: linear-gradient(to bottom, var(--card1), var(--card2));
+        padding: 18px;
+        border-radius: 12px;
+        border: 1px solid var(--border);
+        transition: all 0.28s ease;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+    }
+    .item:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 18px rgba(0,0,0,0.18);
+    }
+    .item::before{
+        content:"";
+        position:absolute;
+        inset:0;
+        background: radial-gradient(ellipse at top left, rgba(255,186,0,0.12), transparent 60%);
+        opacity:0.7;
+        pointer-events:none;
+    }
+
+    /* Item Titles */
+    .item h4 {
+        margin: 0 0 8px;
+        color: #b34700;
+        font-size: 18px;
+        font-weight: 700;
+    }
+    .item p { margin: 0; color: #444; font-size: 15px; }
+
+    /* Price Styling */
+    .price {
+        font-weight: 800;
+        color: var(--success);
+        font-size: 18px;
+    }
+
+    /* Footer */
+    footer {
+        background: linear-gradient(90deg, var(--dark), #333);
+        color: white;
+        text-align: center;
+        padding: 30px 20px;
+        margin-top: 60px;
+        font-size: 16px;
+    }
+    footer h3 { margin-bottom: 10px; font-size: 20px; color: var(--brand2); }
+    footer p { margin: 5px 0; }
+
+    /* Floating action button */
+    .fab {
+        position: fixed;
+        bottom: 22px;
+        right: 22px;
+        background: linear-gradient(45deg, #ff6a00, var(--brand2));
+        color: #fff;
+        border: none;
+        border-radius: 999px;
+        padding: 12px 18px;
+        font-weight: 700;
+        box-shadow: 0 14px 28px rgba(0,0,0,0.22);
+        cursor: pointer;
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+        text-decoration: none;
+    }
+    .fab:hover{
+        transform: translateY(-2px);
+        box-shadow: 0 18px 28px rgba(0,0,0,0.28);
+    }
+
+    /* Utility container */
+    .container { max-width: 1200px; margin: 0 auto; }
+</style>
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav>
+    <a class="logo-wrap" href="#top">
+        <img class="logo-img" src="https://static.vecteezy.com/system/resources/previews/009/021/988/non_2x/smp-logo-smp-letter-smp-letter-logo-design-initials-smp-logo-linked-with-circle-and-uppercase-monogram-logo-smp-typography-for-technology-business-and-real-estate-brand-vector.jpg" alt="SMP Logo">
+        <span class="logo-text">SMP Crackers</span>
+    </a>
+    <ul>
+        <li><a href="#sound">Sound</a></li>
+        <li><a href="#bijili">Bijili</a></li>
+        <li><a href="#twinkling">Twinkling</a></li>
+        <li><a href="#pencils">Pencils</a></li>
+        <li><a href="#chakkars">Chakkars</a></li>
+        <li><a href="#flower">Flower Pots</a></li>
+        <li><a href="#mega-flower">Mega Pots</a></li>
+        <li><a href="#bombs">Bombs</a></li>
+        <li><a href="#rockets">Rockets</a></li>
+        <li><a href="#fountains">Fountains</a></li>
+        <li><a href="#kids">Kids Fancy</a></li>
+        <li><a href="#peacock">Peacock Series</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<!-- Header -->
+<header id="top">
+    <!-- Logo above heading -->
+    <img class="header-logo" src="https://static.vecteezy.com/system/resources/previews/009/021/988/non_2x/smp-logo-smp-letter-smp-letter-logo-design-initials-smp-logo-linked-with-circle-and-uppercase-monogram-logo-smp-typography-for-technology-business-and-real-estate-brand-vector.jpg" alt="SMP Logo">
+    <h1 class="header-title">SMP CRACKERS</h1>
+</header>
+
+<!-- Hero Section -->
+<div class="hero">
+    <div class="container">
+        Welcome to SMP Crackers 🎉<br/>
+        Best Quality Crackers at Lowest Prices!
+        <div class="cta-buttons">
+            <a href="#flower" class="btn">Shop Now</a>
+            <a href="#contact" class="btn">Contact Us</a>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+
+    <!-- ONE / TWO SOUND CRACKERS -->
+    <h2 id="sound">ONE / TWO SOUND CRACKERS</h2>
+    <div class="category">
+        <div class="item-grid">
+            <div class="item"><h4>23/4 Kuruvi</h4><p>MRP: 200 | Discount: 200<br><span class="price">Price: ₹100</span></p></div>
+            <div class="item"><h4>3 1/2 Lakshmi</h4><p>MRP: 200 | Discount: 200<br><span class="price">Price: ₹100</span></p></div>
+            <div class="item"><h4>4" Monkey</h4><p>MRP: 400 | Discount: 400<br><span class="price">Price: ₹100</span></p></div>
+            <div class="item"><h4>4" Gold Lakshmi</h4><p>MRP: 400 | Discount: 400<br><span class="price">Price: ₹100</span></p></div>
+            <div class="item"><h4>5" Hulk</h4><p>MRP: 1000 | Discount: 1000<br><span class="price">Price: ₹100</span></p></div>
+            <div class="item"><h4>6" Joker</h4><p>MRP: 1500 | Discount: 1500<br><span class="price">Price: ₹100</span></p></div>
+            <div class="item"><h4>2 Sound</h4><p>MRP: 2000 | Discount: 2000<br><span class="price">Price: ₹100</span></p></div>
+        </div>
+    </div>
+
+    <!-- BIJILI CRACKERS -->
+    <h2 id="bijili">BIJILI CRACKERS</h2>
+    <div class="category">
+        <div class="item-grid">
+            <div class="item"><h4>Red Bijili (50 pcs)</h4><p>MRP: 20 | Discount: 20<br><span class="price">Price: ₹100</span></p></div>
+            <div class="item"><h4>Stripped Bijili (50 pcs)</h4><p>MRP: 20 | Discount: 20<br><span class="price">Price: ₹100</span></p></div>
+            <div class="item"><h4>Red Bijili (100 pcs)</h4><p>MRP: 40 | Discount: 40<br><span class="price">Price: ₹100</span></p></div>
+            <div class="item"><h4>Stripped Bijili (100 pcs)</h4><p>MRP: 40 | Discount: 40<br><span class="price">Price: ₹100</span></p></div>
+            <div class="item"><h4>24 Deluxe</h4><p>MRP: 100 | Discount: 100<br><span class="price">Price: ₹100</span></p></div>
+            <div class="item"><h4>32 Deluxe</h4><p>MRP: 150 | Discount: 150<br><span class="price">Price: ₹100</span></p></div>
+            <div class="item"><h4>48 Deluxe</h4><p>MRP: 200 | Discount: 200<br><span class="price">Price: ₹100</span></p></div>
+        </div>
+    </div>
+
+    <!-- TWINKLING STAR -->
+    <h2 id="twinkling">TWINKLING STAR</h2>
+    <div class="category">
+        <div class="item-grid">
+            <div class="item"><h4>1.5" Twinkling Star</h4><p>MRP: 15 | Discount: 15<br><span class="price">Price: ₹100</span></p></div>
+            <div class="item"><h4>4" Twinkling Star</h4><p>MRP: 16 | Discount: 16<br><span class="price">Price: ₹100</span></p></div>
+        </div>
+    </div>
+
+    <!-- PENCILS -->
+    <h2 id="pencils">PENCILS</h2>
+    <div class="category">
+        <div class="item-grid">
+            <div class="item"><h4>10" Pencil</h4><p>MRP: 70 | Discount: 70<br><span class="price">Price: ₹100</span></p></div>
+            <div class="item"><h4>12" Pencil</h4><p>MRP: 80 | Discount: 80<br><span class="price">Price: ₹100</span></p></div>
+            <div class="item"><h4>Ultra Pencil</h4><p>MRP: 150 | Discount: 150<br><span class="price">Price: ₹100</span></p></div>
+            <div class="item"><h4>Mega Pencil</h4><p>MRP: 160 | Discount: 160<br><span class="price">Price: ₹100</span></p></div>
+            <div class="item"><h4>Water Ball Pencil</h4><p>MRP: 220 | Discount: 220<br><span class="price">Price: ₹100</span></p></div>
+        </div>
+    </div>
+
+    <!-- GROUND CHAKKARS -->
+    <h2 id="chakkars">GROUND CHAKKARS</h2>
+    <div class="category">
+        <div class="item-grid">
+            <div class="item"><h4>G. Chakkar</h4><p>MRP: 60 | Discount: 60<br><span class="price">Price: ₹100</span></p></div>
+            <div class="item"><h4>Whistling Dixie</h4><p>MRP: 100 | Discount: 100<br><span class="price">Price: ₹100</span></p></div>
+            <div class="item"><h4>Lotus Wheel</h4><p>MRP: 150 | Discount: 150<br><span class="price">Price: ₹100</span></p></div>
+            <div class="item"><h4>Wire Chakkar</h4><p>MRP: 180 | Discount: 180<br><span class="price">Price: ₹100</span></p></div>
+            <div class="item"><h4>G. Chakkar Big (10)</h4><p>MRP: 160 | Discount: 160<br><span class="price">Price: ₹100</span></p></div>
+            <div class="item"><h4>G. Chakkar Special (10)</h4><p>MRP: 130 | Discount: 130<br><span class="price">Price: ₹100</span></p></div>
+            <div class="item"><h4>G. Chakkar Deluxe (10)</h4><p>MRP: 250 | Discount: 250<br><span class="price">Price: ₹100</span></p></div>
+            <div class="item"><h4>G. Chakkar DLX Spinner (10)</h4><p>MRP: 250 | Discount: 250<br><span class="price">Price: ₹100</span></p></div>
+        </div>
+    </div>
+
+    <!-- FLOWER POTS -->
+    <h2 id="flower">FLOWER POTS</h2>
+    <div class="category">
+        <div class="item-grid">
+            <div class="item"><h4>Flower Pots Big</h4><p>MRP: 700 | Discount: 70<br><span class="price">Price: ₹630</span></p></div>
+            <div class="item"><h4>Flower Pots Small</h4><p>MRP: 600 | Discount: 60<br><span class="price">Price: ₹540</span></p></div>
+            <div class="item"><h4>Flower Pots Special</h4><p>MRP: 1000 | Discount: 100<br><span class="price">Price: ₹900</span></p></div>
+            <div class="item"><h4>Flower Pots Giant</h4><p>MRP: 1500 | Discount: 150<br><span class="price">Price: ₹1350</span></p></div>
+            <div class="item"><h4>Flower Pots Super Deluxe (2 pcs)</h4><p>MRP: 1500 | Discount: 150<br><span class="price">Price: ₹1350</span></p></div>
+        </div>
+    </div>
+
+    <!-- MEGA / SPECIAL FLOWER POTS -->
+    <h2 id="mega-flower">MEGA / SPECIAL FLOWER POTS</h2>
+    <div class="category">
+        <div class="item-grid">
+            <div class="item"><h4>Flower Pots Spr DLX (5 pcs)</h4><p>MRP: 1500 | Discount: 150<br><span class="price">Price: ₹1350</span></p></div>
+            <div class="item"><h4>Flower Pots Mega Red X Green</h4><p>MRP: 1800 | Discount: 180<br><span class="price">Price: ₹1620</span></p></div>
+            <div class="item"><h4>Bada Flower Pots</h4><p>MRP: 6000 | Discount: 600<br><span class="price">Price: ₹5400</span></p></div>
+            <div class="item"><h4>Flower Pots Jumbo</h4><p>MRP: 9000 | Discount: 900<br><span class="price">Price: ₹8100</span></p></div>
+        </div>
+    </div>
+
+    <!-- BOMBS -->
+    <h2 id="bombs">BOMBS</h2>
+    <div class="category">
+        <div class="item-grid">
+            <div class="item"><h4>Bullet Bomb</h4><p>MRP: 250 | Discount: 25<br><span class="price">Price: ₹225</span></p></div>
+            <div class="item"><h4>Hydro Bomb</h4><p>MRP: 700 | Discount: 70<br><span class="price">Price: ₹630</span></p></div>
+            <div class="item"><h4>King of King</h4><p>MRP: 400 | Discount: 40<br><span class="price">Price: ₹360</span></p></div>
+            <div class="item"><h4>Classic Bomb</h4><p>MRP: 1500 | Discount: 150<br><span class="price">Price: ₹1350</span></p></div>
+            <div class="item"><h4>Agini Bomb (10 pcs)</h4><p>MRP: 2250 | Discount: 225<br><span class="price">Price: ₹2025</span></p></div>
+            <div class="item"><h4>Digital Jallikattu Bomb</h4><p>MRP: 3000 | Discount: 300<br><span class="price">Price: ₹2700</span></p></div>
+            <div class="item"><h4>Avathar Lion Bomb</h4><p>MRP: 800 | Discount: 80<br><span class="price">Price: ₹720</span></p></div>
+            <div class="item"><h4>1/4 KG Paper Bomb</h4><p>MRP: 500 | Discount: 50<br><span class="price">Price: ₹450</span></p></div>
+            <div class="item"><h4>1/2 KG Paper Bomb</h4><p>MRP: 1000 | Discount: 100<br><span class="price">Price: ₹900</span></p></div>
+            <div class="item"><h4>1 KG Paper Bomb</h4><p>MRP: 2000 | Discount: 200<br><span class="price">Price: ₹1800</span></p></div>
+        </div>
+    </div>
+
+    <!-- ROCKETS -->
+    <h2 id="rockets">ROCKETS</h2>
+    <div class="category">
+        <div class="item-grid">
+            <div class="item"><h4>Rocket Bomb</h4><p>MRP: 700 | Discount: 70<br><span class="price">Price: ₹630</span></p></div>
+            <div class="item"><h4>Lunik Rocket</h4><p>MRP: 1500 | Discount: 150<br><span class="price">Price: ₹1350</span></p></div>
+            <div class="item"><h4>Colour Rocket (Big)</h4><p>MRP: 1800 | Discount: 180<br><span class="price">Price: ₹1620</span></p></div>
+            <div class="item"><h4>Yoga Colour Big (3 pcs)</h4><p>MRP: 300 | Discount: 30<br><span class="price">Price: ₹270</span></p></div>
+            <div class="item"><h4>Lion Colour Big (10 pcs)</h4><p>MRP: 2000 | Discount: 200<br><span class="price">Price: ₹1800</span></p></div>
+            <div class="item"><h4>Royal Colour Big (10 pcs)</h4><p>MRP: 2800 | Discount: 280<br><span class="price">Price: ₹2520</span></p></div>
+        </div>
+    </div>
+
+    <!-- COLOUR FOUNTAINS -->
+    <h2 id="fountains">COLOUR FOUNTAINS</h2>
+    <div class="category">
+        <div class="item-grid">
+            <div class="item"><h4>Bad Boy (Tin)</h4><p>MRP: 4000 | Discount: 400<br><span class="price">Price: ₹3600</span></p></div>
+            <div class="item"><h4>Bad Boy (Single pc)</h4><p>MRP: 1500 | Discount: 150<br><span class="price">Price: ₹1350</span></p></div>
+            <div class="item"><h4>Tik Tok (3 pcs)</h4><p>MRP: 1500 | Discount: 150<br><span class="price">Price: ₹1350</span></p></div>
+            <div class="item"><h4>Golden Coin (5 pcs)</h4><p>MRP: 1800 | Discount: 180<br><span class="price">Price: ₹1620</span></p></div>
+            <div class="item"><h4>Yellow Heart (5 pcs)</h4><p>MRP: 1800 | Discount: 180<br><span class="price">Price: ₹1620</span></p></div>
+            <div class="item"><h4>Star Wars</h4><p>MRP: 1300 | Discount: 130<br><span class="price">Price: ₹1170</span></p></div>
+            <div class="item"><h4>Web Coin</h4><p>MRP: 1200 | Discount: 120<br><span class="price">Price: ₹1080</span></p></div>
+            <div class="item"><h4>Golden Chain</h4><p>MRP: 400 | Discount: 40<br><span class="price">Price: ₹360</span></p></div>
+            <div class="item"><h4>Snow Ball</h4><p>MRP: 150 | Discount: 15<br><span class="price">Price: ₹135</span></p></div>
+            <div class="item"><h4>Sweet Heart</h4><p>MRP: 150 | Discount: 15<br><span class="price">Price: ₹135</span></p></div>
+            <div class="item"><h4>Pista (Tin)</h4><p>MRP: 1300 | Discount: 130<br><span class="price">Price: ₹1170</span></p></div>
+            <div class="item"><h4>Coconut (Tin)</h4><p>MRP: 1300 | Discount: 130<br><span class="price">Price: ₹1170</span></p></div>
+        </div>
+    </div>
+
+    <!-- KIDS FANCY ITEMS -->
+    <h2 id="kids">KIDS FANCY ITEMS</h2>
+    <div class="category">
+        <div class="item-grid">
+            <div class="item"><h4>Neon (3 pcs)</h4><p>MRP: 2300 | Discount: 230<br><span class="price">Price: ₹2070</span></p></div>
+            <div class="item"><h4>Siren (3 pcs)</h4><p>MRP: 2500 | Discount: 250<br><span class="price">Price: ₹2250</span></p></div>
+            <div class="item"><h4>5 in 1 Fountain</h4><p>MRP: 1500 | Discount: 150<br><span class="price">Price: ₹1350</span></p></div>
+            <div class="item"><h4>Land of Zenith (5 pcs)</h4><p>MRP: 1250 | Discount: 125<br><span class="price">Price: ₹1125</span></p></div>
+            <div class="item"><h4>Bonanza (5 pcs)</h4><p>MRP: 1250 | Discount: 125<br><span class="price">Price: ₹1125</span></p></div>
+            <div class="item"><h4>Rainbow Colours (5 pcs)</h4><p>MRP: 2500 | Discount: 250<br><span class="price">Price: ₹2250</span></p></div>
+            <div class="item"><h4>Kelly</h4><p>MRP: 2000 | Discount: 200<br><span class="price">Price: ₹1800</span></p></div>
+            <div class="item"><h4>Miss Rich (3 colour)</h4><p>MRP: 2000 | Discount: 200<br><span class="price">Price: ₹1800</span></p></div>
+            <div class="item"><h4>Poppy (3 colour)</h4><p>MRP: 2000 | Discount: 200<br><span class="price">Price: ₹1800</span></p></div>
+            <div class="item"><h4>Lolly Pops</h4><p>MRP: 750 | Discount: 75<br><span class="price">Price: ₹675</span></p></div>
+            <div class="item"><h4>Spirit Haven (3 pcs)</h4><p>MRP: 6000 | Discount: 600<br><span class="price">Price: ₹5400</span></p></div>
+        </div>
+    </div>
+
+    <!-- PEACOCK SERIES -->
+    <h2 id="peacock">PEACOCK SERIES</h2>
+    <div class="category">
+        <div class="item-grid">
+            <div class="item"><h4>Flash Pistol</h4><p>MRP: 1200 | Discount: 120<br><span class="price">Price: ₹1080</span></p></div>
+            <div class="item"><h4>Magic Pops</h4><p>MRP: 200 | Discount: 20<br><span class="price">Price: ₹180</span></p></div>
+            <div class="item"><h4>Electric Stone</h4><p>MRP: 200 | Discount: 20<br><span class="price">Price: ₹180</span></p></div>
+            <div class="item"><h4>Jeem Boom Baa</h4><p>MRP: 200 | Discount: 20<br><span class="price">Price: ₹180</span></p></div>
+            <div class="item"><h4>Pop Pop (Onion)</h4><p>MRP: 200 | Discount: 20<br><span class="price">Price: ₹180</span></p></div>
+            <div class="item"><h4>Anaconda</h4><p>MRP: 300 | Discount: 30<br><span class="price">Price: ₹270</span></p></div>
+            <div class="item"><h4>Ring Ring</h4><p>MRP: 2250 | Discount: 225<br><span class="price">Price: ₹2025</span></p></div>
+            <div class="item"><h4>Drone</h4><p>MRP: 2000 | Discount: 200<br><span class="price">Price: ₹1800</span></p></div>
+            <div class="item"><h4>Bat Ball</h4><p>MRP: 2500 | Discount: 250<br><span class="price">Price: ₹2250</span></p></div>
+            <div class="item"><h4>Cartoon</h4><p>MRP: 2000 | Discount: 200<br><span class="price">Price: ₹1800</span></p></div>
+            <div class="item"><h4>Money Bank (Big)</h4><p>MRP: 2500 | Discount: 250<br><span class="price">Price: ₹2250</span></p></div>
+            <div class="item"><h4>Icone</h4><p>MRP: 2500 | Discount: 250<br><span class="price">Price: ₹2250</span></p></div>
+            <div class="item"><h4>Kit Kat</h4><p>MRP: 600 | Discount: 60<br><span class="price">Price: ₹540</span></p></div>
+            <div class="item"><h4>Colour Smokey (Mini)</h4><p>MRP: 700 | Discount: 70<br><span class="price">Price: ₹630</span></p></div>
+            <div class="item"><h4>Butter Fly</h4><p>MRP: 1250 | Discount: 125<br><span class="price">Price: ₹1125</span></p></div>
+            <div class="item"><h4>Feather Peacock</h4><p>MRP: 1500 | Discount: 150<br><span class="price">Price: ₹1350</span></p></div>
+            <div class="item"><h4>Peacock Mini</h4><p>MRP: 2800 | Discount: 280<br><span class="price">Price: ₹2520</span></p></div>
+            <div class="item"><h4>Bada Peacock Multi Colour</h4><p>MRP: 4500 | Discount: 450<br><span class="price">Price: ₹4050</span></p></div>
+        </div>
+    </div>
+
+</div>
+
+<!-- Footer -->
+<footer id="contact">
+    <h3>Contact Us</h3>
+    <p>📞 S. Velmurugan – 9942371733</p>
+    <p>📧 malesh26032006@gmail.com</p>
+</footer>
+
+<!-- Floating CTA -->
+<a class="fab" href="#contact">Enquire Now</a>
+
+</body>
+</html>
