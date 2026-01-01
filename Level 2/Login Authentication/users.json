@@ -1,0 +1,25 @@
+{
+    "Malesh": "scrypt:32768:8:1$RHie9WapjqgeKR2n$0da5564e24f6d98029db685f058c0f8225c610f84c77667a543a9b499459ebf2878bff4a6ff522fdf2db02969fdc8fb876363fbf132030c9f19a8da16e2fbef1",
+    "Kumar": {
+        "password": "scrypt:32768:8:1$i6lEV93EWJx4IxfB$1436e0196a97c0fc1384c0c8f535a8d160d25b964b46c059a3783ec515e5b38ca5d7963d4991761c351452c0bd1aa796ec3e280f108e3ef3671792130239a1d9",
+        "full_name": "leo dass",
+        "email": "malesh26032006@gmail.com",
+        "phone": "9942371733",
+        "address": "xxxxt",
+        "city": "yyyy",
+        "country": "zzzz",
+        "age": "19",
+        "photo": "Kumar_WhatsApp_Image_2025-11-19_at_20.19.35_0553338a.jpg"
+    },
+    "maleshkumar": {
+        "password": "scrypt:32768:8:1$6cxnIQ41TGy9Uo4G$2ad2b0bdd1f7b4b7ccd82200158ebf0eca83a8607241171f2d2421e93004276e3329f94f0f1f6cd99286a0f9029e14b5970685de3bbbfc44648239e1953a6fa2",
+        "full_name": "Malesh",
+        "email": "malesh26032006@gmail.com",
+        "phone": "9942371733",
+        "address": "2,Nadar North Street Thiruthangal-626130",
+        "city": "Sivakasi,Tamilnadu",
+        "country": "India",
+        "age": "25",
+        "photo": "maleshkumar_download_1.jpg"
+    }
+}

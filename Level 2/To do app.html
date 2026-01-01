@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Stylish To-Do App</title>
+  <style>
+    /* --- Styles as in previous version --- */
+    body {
+      background: linear-gradient(135deg, #FFDEE9 0%, #B5FFFC 100%);
+      min-height: 100vh;
+      margin: 0;
+      font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow-y: auto;
+    }
+    .container {
+      background: linear-gradient(120deg, #fff1eb 0%, #ace0f9 100%);
+      width: 98%;
+      max-width: 430px;
+      margin: 40px auto;
+      border-radius: 30px;
+      padding: 32px 26px 28px 26px;
+      box-shadow: 0 8px 52px 0 rgba(22, 21, 55, 0.18), 0 1.2px 8px #8567ff1a;
+      position: relative;
+      backdrop-filter: blur(1.5px);
+      transition: box-shadow 0.33s, transform 0.14s;
+      animation: fadePop 0.7s;
+    }
+    .container:hover {
+      box-shadow: 0 14px 90px 0 rgba(156,90,249,0.24), 0 4px 18px #76ffe51a;
+      transform: scale(1.02);
+    }
+    @keyframes fadePop {
+      0% { opacity:0; transform: scale(0.89);}
+      70% { opacity:.7; transform: scale(1.03);}
+      100%{ opacity:1; transform: scale(1);}
+    }
+    h1 {
+      text-align: center;
+      margin: 0 0 16px 0;
+      font-size: 2.45em;
+      letter-spacing: 0.03em;
+      font-weight: 800;
+      background: linear-gradient(90deg, #2450c5 10%, #ff5faa 55%, #2af598 100%);
+      -webkit-background-clip: text;
+      color: transparent;
+      background-clip: text;
+      text-shadow: 0 3px 16px #dab2f95c, 0 1px 1px #fff;
+      animation: rainbowTitle 8s linear infinite;
+    }
+    @keyframes rainbowTitle {
+      0% {background-position:0%;}
+      100% {background-position:100%;}
+    }
+    h2 {
+      margin-bottom: 16px;
+      margin-top: 38px;
+      font-size: 1.21em;
+      color: #5852f5;
+      letter-spacing: 0.04em;
+      font-weight: 800;
+      padding-bottom: 6px;
+      border-bottom: 2.4px dashed #f5d8ff;
+      background: linear-gradient(90deg,#f9bab5 10%,#daccfc 90%);
+      -webkit-background-clip: text;
+      color: transparent;
+      background-clip: text;
+      text-shadow: 0 0 10px #e3d3ff44;
+      animation: fadeList .6s;
+    }
+    form {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 12px;
+      animation: fadeIn .8s;
+    }
+    @keyframes fadeIn {
+      0% { opacity:0; transform: translateY(-18px);}
+      100%{ opacity:1; transform: none;}
+    }
+    input[type="text"], input[type="date"] {
+      padding: 8px 12px;
+      font-size: 1.01em;
+      border: 1.7px solid #d1bbe7;
+      border-radius: 12px;
+      background:#f3f8ff;
+      font-family:inherit;
+      transition: border-color .23s, background .23s, box-shadow .24s;
+      box-shadow: 0 2px 7px #ffeaff46;
+    }
+    input[type="text"]:focus, input[type="date"]:focus {
+      border-color: #ff5faa;
+      background: #ffffff;
+      outline:none;
+      box-shadow: 0px 2px 12px #ff5faa30;
+      animation: glowInput .7s infinite alternate;
+    }
+    @keyframes glowInput {
+      0% { box-shadow: 0px 2px 10px #2af59830;}
+      100%{ box-shadow: 0px 2px 12px #ff5faa30;}
+    }
+    input[type="text"] {
+      flex: 2;
+    }
+    .due-label {
+      font-size: 1em;
+      font-weight: 600;
+      color: #4456c1;
+      background: linear-gradient(90deg,#a8efe8 10%, #ffe4ea 90%);
+      border-radius: 8px;
+      padding: 3px 7px;
+      margin-right: 3px;
+      margin-left: 3px;
+      letter-spacing: .04em;
+      box-shadow: 0px 1px 8px #f7deff31;
+      user-select: none;
+    }
+    input[type="date"] {
+      flex: 1;
+      min-width: 108px;
+    }
+    .search-bar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 18px;
+      animation: fadeIn .8s;
+      position: relative;
+    }
+    #searchInput {
+      width: 100%;
+      border-radius: 10px;
+      background: #f2eaffa7;
+      padding: 8px 13px;
+      border: 1.4px solid #d1bbe7;
+      font-size:1.04em;
+      transition:.15s;
+      box-shadow: 0 2px 9px #afefee30;
+    }
+    #searchInput:focus {
+      border-color: #2af598;
+      background:white;
+      outline:none;
+      box-shadow: 0 2px 12px #2af59836;
+      animation: glowInput .7s infinite alternate;
+    }
+    .search-results {
+      position: absolute;
+      top: 38px;
+      left: 0;
+      width: 100%;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 34px #ff5faa24;
+      z-index: 2;
+      max-height: 211px;
+      overflow-y: auto;
+      display: none;
+      animation: fade .35s;
+    }
+    .search-results ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .search-results li {
+      padding: 9px 17px;
+      cursor: pointer;
+      transition: background .13s;
+      border-bottom: 1px solid #f2eaffa7;
+    }
+    .search-results li:last-child {
+      border-bottom: none;
+    }
+    .search-results li:hover, .search-results .selected {
+      background: linear-gradient(90deg, #f3f8ff 40%, #ace0f9 100%);
+    }
+    button {
+      padding: 8px 15px;
+      font-size: 1em;
+      border: none;
+      border-radius: 13px;
+      cursor: pointer;
+      font-family: inherit;
+      background: linear-gradient(98deg, #2450c5 47%, #ff5faa 100%);
+      color: white;
+      font-weight:700;
+      box-shadow: 0px 2px 10px #fdb8ff44;
+      transition: background .21s, transform .15s, box-shadow .22s;
+      position:relative;
+      overflow:visible;
+      z-index:1;
+      outline: none;
+      letter-spacing: .04em;
+      border: 0.8px solid #ff85ec89;
+      animation: popBtn .7s infinite alternate;
+    }
+    @keyframes popBtn {
+      0% { transform: scale(.99);}
+      100%{ transform: scale(1.06);}
+    }
+    button:not(:disabled):hover {
+      background: linear-gradient(98deg, #2af598 45%, #ff86a8 100%);
+      transform: scale(1.13);
+      box-shadow: 0px 2px 18px #aff7f7a4;
+      border: 1.2px solid #2af59857;
+    }
+    button.delete {
+      background: linear-gradient(96deg, #ff65a3 50%, #e94444 100%);
+      box-shadow: 0px 2px 10px #ff8acf89;
+      border-color: #ffbdbd84;
+      animation: popBtnDel .9s infinite alternate;
+    }
+    @keyframes popBtnDel {
+      0% { transform: scale(.97);}
+      100%{ transform: scale(1.08);}
+    }
+    button.delete:hover {
+      background: linear-gradient(96deg, #d5002e 70%, #ff5faa 100%);
+      border: 1.2px solid #fa8181a7;
+      box-shadow: 0px 2px 18px #fb7d7da4;
+      transform: scale(1.15);
+    }
+    button.edit {
+      background: linear-gradient(94deg, #ffdf9b 50%, #888888 98%);
+      color:#2450c5;
+      box-shadow: 0px 2px 10px #ffecb945;
+      border-color: #ffeacb84;
+    }
+    button.edit:hover {
+      background: linear-gradient(94deg, #fe9174 60%, #bbbbbb 100%);
+      color:#2af598;
+      border-color: #ffcf7a98;
+      box-shadow: 0px 2px 18px #ffeacba4;
+      transform: scale(1.15);
+    }
+    button.save {
+      background: linear-gradient(96deg, #2af598 80%, #2450c5 100%);
+      box-shadow: 0px 2px 10px #8ff7ff55;
+      border-color: #2af59866;
+      animation: popBtnSave .7s infinite alternate;
+    }
+    @keyframes popBtnSave {
+      0% { transform: scale(1.00);}
+      100%{ transform: scale(1.10);}
+    }
+    button.save:hover {
+      background: linear-gradient(96deg, #189c69 100%, #2450c5 100%);
+      border: 1.2px solid #2af598;
+      box-shadow: 0px 2px 18px #aff7f7a4;
+    }
+    button.cancel {
+      background: linear-gradient(96deg, #eaf0fc 80%, #ffdee9 100%);
+      color: #2450c5;
+      box-shadow: 0px 1px 8px #ffeaff46;
+      border-color: #bbf7ff52;
+    }
+    button.cancel:hover {
+      background: linear-gradient(96deg, #c2d2ed 100%, #b8f9ff 100%);
+      color: #2af598;
+      box-shadow: 0px 1px 8px #aaf7ff46;
+      border: 1.2px solid #2af59857;
+      transform: scale(1.05);
+    }
+    button.clear {
+      background: linear-gradient(80deg, #fc6565 90%, #e94444 100%);
+      margin-top: 9px;
+      font-size: 0.98em;
+      box-shadow: none;
+      color:white;
+      border-color:#ffbdbd84;
+      animation: popBtnDel .8s infinite alternate;
+    }
+    button.clear:hover {
+      background: linear-gradient(80deg, #d5002e 90%, #ff5faa 100%);
+      border: 1.2px solid #fa8181a7;
+      box-shadow: 0px 2px 15px #fdb8ff54;
+    }
+    button:active {
+      transform: scale(.97);
+      box-shadow: 0 0 6px #bba7ff3a;
+    }
+    .section {
+      margin-bottom: 26px;
+      animation: fadeList .63s;
+    }
+    @keyframes fadeList {
+      0% {opacity:0; transform:translateY(8px);}
+      100%{opacity:1;transform:none;}
+    }
+    .task-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .task-item {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      background: linear-gradient(87deg,#fff2ee 10%,#e7feff 100%);
+      border-radius: 18px;
+      box-shadow: 0 2px 16px #f3d2fb85, 0 1px 8px #9bfff61a;
+      margin-bottom: 9px;
+      padding: 11px 14px 11px 8px;
+      position: relative;
+      animation: slideIn .7s;
+      transition: background .22s, transform .21s, box-shadow .2s;
+    }
+    @keyframes slideIn {
+      0% {opacity:0; transform:translateX(-28px);}
+      80%{transform:scale(1.09);}
+      100%{opacity:1;transform:none;}
+    }
+    .task-item.completed span.text {
+      text-decoration: line-through;
+      color: #888;
+      font-weight: 600;
+      letter-spacing:.01em;
+      text-shadow: 0 0 10px #eeeeee48;
+      background: linear-gradient(90deg,#eeeeee 50%, #eaf0fc 100%);
+      -webkit-background-clip: text;
+      color: transparent;
+      background-clip: text;
+    }
+    .task-item.overdue span.text {
+      color: #d10707;
+      font-weight: 900;
+      text-shadow: 0 1px 10px #ffbdbd25, 0 0 8px #ff65a3a9;
+      animation: pulse .83s infinite alternate;
+    }
+    @keyframes pulse {
+      0% { text-shadow: 0 2px 3px #fa9a9a2e; }
+      100% { text-shadow: 0 2px 13px #d1070745; }
+    }
+    .task-details {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .dates {
+      font-size: 0.98em;
+      color: #b594e7;
+      letter-spacing:.01em;
+      margin-top:4px;
+      white-space:wrap;
+      text-shadow: 0 1px 9px #b8f9ff23;
+      font-weight:600;
+    }
+    .task-item input[type="checkbox"] {
+      accent-color: #2af598;
+      width: 24px;
+      height: 24px;
+      margin-right:5px;
+      border-radius: 100%;
+      box-shadow: 0 1px 3px #ff5faa41;
+      transition:.22s;
+      border: 1.2px solid #ffdee9;
+      outline:none;
+      cursor:pointer;
+    }
+    .task-item input[type="checkbox"]:active {
+      box-shadow: 0 2px 8px #2af59833;
+      outline:none;
+    }
+    @media (max-width: 600px) {
+      .container {
+        padding:13px;
+        border-radius:19px;
+      }
+      form { gap:8px;}
+      h1 {font-size:1.65em;}
+      h2 {font-size:1em;}
+      .task-item { font-size:.97em; padding:9px 6px 9px 2px;}
+      .task-details{font-size:1em;}
+      .dates{font-size:.88em;}
+    }
+    ::-webkit-scrollbar {
+      width: 8px;
+      background: #ffdee9;
+      border-radius: 40px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(135deg,#fdc2ff80 20%, #b4e7fa 100%);
+      border-radius: 50px;
+    }
+    ::selection{
+      background:#b4e7fa99;
+    }
+    .fade { animation: fade .5s;}
+    @keyframes fade {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+    .fab {
+      display:none;
+      position:fixed;
+      bottom:28px;
+      right:28px;
+      width:64px;
+      height:64px;
+      background:linear-gradient(120deg,#ff5faa 30%, #2af598 90%);
+      color:white;
+      font-size:2em;
+      font-weight:900;
+      border-radius:50%;
+      box-shadow:0 3px 20px #e069d13d;
+      border:none;
+      cursor:pointer;
+      transition:.18s;
+      z-index:10;
+      outline:none;
+      animation: popBtn .8s infinite alternate;
+    }
+    .fab:hover {
+      background:linear-gradient(120deg,#2af598 60%, #2af598 100%);
+      box-shadow:0 3px 30px #2af59871;
+      transform:scale(1.15);
+      outline:none;
+    }
+    @media (max-width: 800px) {
+      .fab {display:block;}
+    }
+    .search-highlight {
+      background: #ffecb9;
+      border-radius: 4px;
+      padding: 0 4px;
+      color: #ff65a3;
+      font-weight: 900;
+      transition:.1s;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>To-Do App</h1>
+    <form id="taskForm">
+      <input type="text" id="taskInput" placeholder="Add a new task..." autocomplete="off" />
+      <label for="dueInput" class="due-label">Due Date</label>
+      <input type="date" id="dueInput" title="Due date" />
+      <button type="submit" title="Add Task">Add</button>
+    </form>
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Search tasks..." autocomplete="off" />
+      <div class="search-results" id="searchResults"></div>
+    </div>
+    <div class="section">
+      <h2>Pending Tasks</h2>
+      <ul id="pendingList" class="task-list"></ul>
+      <button id="sortPendingBtn" style="margin:7px 0 0 0; width:100%; font-size:0.99em; background:linear-gradient(94deg,#ff5faa 50%,#2af598 100%);color:white;border-radius:9px;box-shadow:0 2px 10px #ff6aab54;border:none;outline:none;">Sort by Due Date</button>
+    </div>
+    <div class="section">
+      <h2>Completed Tasks</h2>
+      <ul id="completedList" class="task-list"></ul>
+      <button id="clearCompletedBtn" class="clear" style="display:none">Clear Completed</button>
+      <button id="sortCompletedBtn" style="margin:6px 0 0 0; width:100%; font-size:0.95em; background:linear-gradient(90deg,#c2e9fb 20%,#fc65fc 100%);color:#2450c5;border-radius:9px;box-shadow:0 2px 9px #e7feff54;border:none;outline:none;">Sort Completed by Date</button>
+    </div>
+  </div>
+  <button class="fab" id="fabBtn" title="Add Task">+</button>
+<script>
+  let tasks = [];
+  let editingId = null;
+  let searchText = "";
+  let sortPendingAsc = true;
+  let sortCompletedAsc = true;
+  let selectedSearchIndex = -1;
+
+  function getTasks() {
+    const raw = localStorage.getItem("tasks_v2");
+    return raw ? JSON.parse(raw) : [];
+  }
+  function saveTasks() {
+    localStorage.setItem("tasks_v2", JSON.stringify(tasks));
+  }
+  function fadeAnim(el) {
+    if (el) {el.classList.add('fade'); setTimeout(()=>el.classList.remove('fade'),300);}
+  }
+  function renderLists() {
+    let pending = tasks.filter(t => !t.completed && taskMatchSearch(t));
+    let completed = tasks.filter(t => t.completed && taskMatchSearch(t));
+    if (sortPendingAsc) {
+      pending.sort((a,b) =>
+        (!a.due && b.due) ? 1 : (!b.due && a.due) ? -1 :
+        a.due && b.due ? new Date(a.due)-new Date(b.due) : 0);
+    } else {
+      pending.sort((a,b) =>
+        (!a.due && b.due) ? -1 : (!b.due && a.due) ? 1 :
+        a.due && b.due ? new Date(b.due)-new Date(a.due) : 0);
+    }
+    if (sortCompletedAsc) {
+      completed.sort((a,b) =>
+        (a.completedAt && b.completedAt) ? new Date(a.completedAt)-new Date(b.completedAt) : 0);
+    } else {
+      completed.sort((a,b) =>
+        (b.completedAt && a.completedAt) ? new Date(b.completedAt)-new Date(a.completedAt) : 0);
+    }
+    document.getElementById("pendingList").innerHTML = "";
+    document.getElementById("completedList").innerHTML = "";
+    pending.forEach(t => {
+      let item = renderTaskItem(t, true);
+      fadeAnim(item);
+      document.getElementById("pendingList").appendChild(item);
+    });
+    completed.forEach(t => {
+      let item = renderTaskItem(t, true);
+      fadeAnim(item);
+      document.getElementById("completedList").appendChild(item);
+    });
+    document.getElementById("clearCompletedBtn").style.display = completed.length ? "" : "none";
+  }
+  function highlightSearch(text, val) {
+    if (!val.trim()) return text;
+    let regex = new RegExp(`(${val.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+    return text.replace(regex, '<span class="search-highlight">$1</span>');
+  }
+  function formatDate(dtStr) {
+    if (!dtStr) return "";
+    const d = new Date(dtStr);
+    return d.toLocaleDateString() + " " + d.toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});
+  }
+  function formatDueDate(dtStr) {
+    if (!dtStr) return "";
+    const d = new Date(dtStr);
+    return d.toLocaleDateString();
+  }
+  function isOverdue(task) {
+    if (!task.due) return false;
+    return !task.completed && new Date(task.due) < new Date(new Date().toDateString());
+  }
+  function taskMatchSearch(task) {
+    if (!searchText.trim()) return true;
+    return (
+      task.text.toLowerCase().includes(searchText.trim().toLowerCase()) ||
+      (task.due && formatDueDate(task.due).includes(searchText.trim()))
+    );
+  }
+  function renderTaskItem(task, doHighlight=false) {
+    const li = document.createElement("li");
+    li.className = "task-item" +
+      (task.completed ? " completed" : "") +
+      (isOverdue(task) ? " overdue" : "");
+
+    // Complete toggle
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.checked = task.completed;
+    checkbox.title = task.completed ? "Mark as pending" : "Mark as complete";
+    checkbox.onclick = () => {
+      checkbox.disabled = true;
+      setTimeout(()=> checkbox.disabled = false,260);
+      toggleComplete(task.id);
+    };
+    // Details: text, dates, due
+    const details = document.createElement("div");
+    details.className = "task-details";
+    // Editing mode
+    if (editingId === task.id) {
+      const editInput = document.createElement("input");
+      editInput.type = "text";
+      editInput.value = task.text;
+      editInput.style.marginBottom = "8px";
+      const dueInput = document.createElement("input");
+      dueInput.type = "date";
+      dueInput.value = task.due ? task.due.split("T")[0]: "";
+      dueInput.style.marginBottom="7px";
+      editInput.style.animation = "glowInput .8s infinite alternate";
+      dueInput.style.animation = "glowInput .8s infinite alternate";
+      details.appendChild(editInput);
+
+      // Add new label for edit mode too
+      let editDueLabel = document.createElement("label");
+      editDueLabel.textContent = "Due Date";
+      editDueLabel.className = "due-label";
+      details.appendChild(editDueLabel);
+      details.appendChild(dueInput);
+
+      const btnSave = document.createElement("button");
+      btnSave.className = "save";
+      btnSave.textContent = "Save";
+      btnSave.onclick = () => saveEdit(task.id, editInput.value, dueInput.value);
+
+      const btnCancel = document.createElement("button");
+      btnCancel.className = "cancel";
+      btnCancel.textContent = "Cancel";
+      btnCancel.onclick = () => { editingId = null; renderLists(); }
+
+      details.appendChild(btnSave);
+      details.appendChild(btnCancel);
+    } else {
+      const textSpan = document.createElement("span");
+      textSpan.className = "text";
+      textSpan.innerHTML = doHighlight ? highlightSearch(task.text, searchText) : task.text;
+      textSpan.title = "Click to edit";
+      textSpan.style.cursor = "pointer";
+      textSpan.onclick = () => { editingId = task.id; renderLists(); };
+      details.appendChild(textSpan);
+
+      const dates = document.createElement("span");
+      dates.className = "dates";
+      dates.innerHTML = "Added: " + formatDate(task.created);
+      if (task.due) dates.innerHTML += " | Due: " + highlightSearch(formatDueDate(task.due), searchText);
+      if (isOverdue(task)) dates.innerHTML += " • Overdue!";
+      if (task.completed && task.completedAt)
+        dates.innerHTML += " | Done: " + formatDate(task.completedAt);
+      details.appendChild(dates);
+    }
+
+    if (editingId !== task.id) {
+      const btnEdit = document.createElement("button");
+      btnEdit.className = "edit";
+      btnEdit.textContent = "Edit";
+      btnEdit.onclick = () => { editingId = task.id; renderLists(); };
+
+      const btnDelete = document.createElement("button");
+      btnDelete.className = "delete";
+      btnDelete.textContent = "Delete";
+      btnDelete.onclick = () => confirmDelete(task.id);
+
+      details.appendChild(btnEdit);
+      details.appendChild(btnDelete);
+    }
+
+    li.appendChild(checkbox);
+    li.appendChild(details);
+    return li;
+  }
+  function addTask(text, due) {
+    tasks.push({
+      id: Date.now() + Math.random(),
+      text,
+      completed: false,
+      created: new Date().toISOString(),
+      completedAt: null,
+      due: due ? new Date(due).toISOString() : null,
+    });
+    saveTasks();
+    renderLists();
+  }
+  function confirmDelete(id) {
+    if (window.confirm("Delete task?")) {
+      deleteTask(id);
+    }
+  }
+  let lastDeletedTask = null;
+  function deleteTask(id) {
+    let found = tasks.find(t => t.id === id);
+    if(found) lastDeletedTask = found;
+    tasks = tasks.filter(t => t.id !== id);
+    if (editingId === id) editingId = null;
+    saveTasks();
+    renderLists();
+  }
+  function saveEdit(id, newText, newDue) {
+    if (!newText.trim()) {
+      alert("Task text cannot be empty");
+      return;
+    }
+    tasks = tasks.map(t => t.id === id
+      ? { ...t, text: newText, due: newDue ? new Date(newDue).toISOString() : null }
+      : t
+    );
+    editingId = null;
+    saveTasks();
+    renderLists();
+  }
+  function toggleComplete(id) {
+    tasks = tasks.map(t =>
+      t.id === id
+        ? {
+            ...t,
+            completed: !t.completed,
+            completedAt: !t.completed ? new Date().toISOString() : null,
+          }
+        : t
+    );
+    saveTasks();
+    renderLists();
+  }
+  document.getElementById("taskForm").onsubmit = e => {
+    e.preventDefault();
+    const val = document.getElementById("taskInput").value.trim();
+    const dueVal = document.getElementById("dueInput").value;
+    if (val) addTask(val, dueVal);
+    document.getElementById("taskInput").value = "";
+    document.getElementById("dueInput").value = "";
+  };
+  document.getElementById("sortPendingBtn").onclick = () => {
+    sortPendingAsc = !sortPendingAsc;
+    renderLists();
+    document.getElementById("sortPendingBtn").textContent = sortPendingAsc ? "Sort by Due Date" : "Sort by Reverse Due";
+    fadeAnim(document.getElementById("pendingList"));
+  };
+  document.getElementById("sortCompletedBtn").onclick = () => {
+    sortCompletedAsc = !sortCompletedAsc;
+    renderLists();
+    document.getElementById("sortCompletedBtn").textContent = sortCompletedAsc ? "Sort Completed by Date" : "Sort Reverse";
+    fadeAnim(document.getElementById("completedList"));
+  };
+  document.getElementById("clearCompletedBtn").onclick = () => {
+    if (!window.confirm("Clear all completed tasks?")) return;
+    tasks = tasks.filter(t => !t.completed);
+    saveTasks();
+    renderLists();
+  };
+  document.getElementById("fabBtn").onclick = () => {
+    document.getElementById("taskInput").focus();
+    document.getElementById("taskInput").style.background="#fff7e8";
+    setTimeout(()=>document.getElementById("taskInput").style.background="",800);
+  };
+  document.body.addEventListener("keydown", function(e){
+    if(editingId !== null && e.key === "Enter"){
+      e.preventDefault();
+      let task = tasks.find(t=>t.id===editingId);
+      let editDiv = document.querySelector(".task-item input[type='text']");
+      let dueDiv = document.querySelector(".task-item input[type='date']");
+      if(task && editDiv && dueDiv){
+        saveEdit(task.id, editDiv.value, dueDiv.value);
+      }
+    }
+    if(e.ctrlKey && (e.key==='z' || e.key==='Z')) {
+      if(lastDeletedTask) {
+        tasks.push(lastDeletedTask);
+        saveTasks();
+        renderLists();
+        lastDeletedTask = null;
+        alert("Undid last delete.");
+      }
+    }
+    if(document.activeElement === document.getElementById("searchInput")) {
+      let results = filteredSearchTasks();
+      let resultDiv = document.getElementById("searchResults");
+      if(results.length > 0 && resultDiv.style.display !== "none") {
+        if(e.key === "ArrowDown") {
+          e.preventDefault();
+          selectedSearchIndex = (selectedSearchIndex + 1) % results.length;
+          renderSearchList();
+        } else if(e.key === "ArrowUp") {
+          e.preventDefault();
+          selectedSearchIndex = (selectedSearchIndex - 1 + results.length) % results.length;
+          renderSearchList();
+        } else if(e.key === "Enter" && selectedSearchIndex >= 0) {
+          e.preventDefault();
+          let taskId = results[selectedSearchIndex].id;
+          scrollToTaskId(taskId);
+          closeSearchList();
+          selectedSearchIndex = -1;
+        }
+      }
+    }
+  });
+  function filteredSearchTasks() {
+    let val = document.getElementById("searchInput").value.trim().toLowerCase();
+    if (!val) return [];
+    return tasks.filter(t =>
+      t.text.toLowerCase().includes(val) ||
+      (t.due && formatDueDate(t.due).includes(val))
+    );
+  }
+  function renderSearchList() {
+    let results = filteredSearchTasks();
+    let listHtml = "";
+    if(results.length === 0) {
+      listHtml = "<ul><li style=\"color:#c2d2ed;\">No matches</li></ul>";
+    } else {
+      listHtml = "<ul>" + results.map((task, idx) =>
+        `<li${selectedSearchIndex===idx?" class=\"selected\"":""} onclick="scrollToTaskId(${task.id});closeSearchList();">${highlightSearch(task.text, searchText)}<span style="float:right;color:#b594e7;font-size:0.88em;">${task.due?formatDueDate(task.due):""}</span></li>`
+      ).join("") + "</ul>";
+    }
+    let div = document.getElementById("searchResults");
+    div.innerHTML = listHtml;
+    div.style.display = results.length ? "block" : "none";
+  }
+  function closeSearchList() {
+    let div = document.getElementById("searchResults");
+    div.innerHTML = "";
+    div.style.display = "none";
+  }
+  window.scrollToTaskId = function(id) {
+    let el = Array.from(document.querySelectorAll(".task-item")).find(li =>
+      (li && li.querySelector(".edit")) ? false : (li && li.querySelector(".text") && tasks.find(t=>t.id===id)?.text === li.querySelector(".text").textContent)
+    );
+    if(el) { el.scrollIntoView({behavior:"smooth",block:"center"}); fadeAnim(el); }
+  };
+  document.getElementById("searchInput").addEventListener("input", function(e){
+    searchText = e.target.value;
+    renderLists();
+    if(searchText.trim()) {
+      selectedSearchIndex = -1;
+      renderSearchList();
+    } else {
+      closeSearchList();
+      selectedSearchIndex = -1;
+    }
+  });
+  document.getElementById("searchInput").addEventListener("blur", closeSearchList);
+  tasks = getTasks();
+  renderLists();
+</script>
+</body>
+</html>

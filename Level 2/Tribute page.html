@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thalapathy Vijay - The Complete Journey</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1574267432644-f610f5e28f8f?w=1600') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,215,0,0.3) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: scroll 20s linear infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, 
+                transparent 0%, 
+                rgba(255, 215, 0, 0.1) 25%, 
+                transparent 50%, 
+                rgba(255, 140, 0, 0.1) 75%, 
+                transparent 100%);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { transform: translateX(-100%); }
+            50% { transform: translateX(100%); }
+        }
+
+        @keyframes scroll {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .hero-content {
+            z-index: 1;
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 6rem;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.5), 0 0 30px rgba(255,215,0,0.5);
+            background: linear-gradient(45deg, #FFD700, #FFA500, #FFD700, #FF8C00);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 3s ease infinite;
+            font-weight: 900;
+            letter-spacing: 5px;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .hero p {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.8; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.05); }
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: #FFD700;
+            margin-top: 20px;
+            animation: slideInFromBottom 1.5s ease;
+        }
+
+        @keyframes slideInFromBottom {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .sparkle span {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: #FFD700;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #FFD700;
+            animation: twinkle 2s ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+
+        .sparkle span:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
+        .sparkle span:nth-child(2) { top: 40%; left: 80%; animation-delay: 0.5s; }
+        .sparkle span:nth-child(3) { top: 60%; left: 20%; animation-delay: 1s; }
+        .sparkle span:nth-child(4) { top: 80%; left: 70%; animation-delay: 1.5s; }
+        .sparkle span:nth-child(5) { top: 30%; left: 50%; animation-delay: 0.3s; }
+        .sparkle span:nth-child(6) { top: 70%; left: 40%; animation-delay: 0.8s; }
+        .sparkle span:nth-child(7) { top: 15%; left: 60%; animation-delay: 1.2s; }
+        .sparkle span:nth-child(8) { top: 85%; left: 30%; animation-delay: 0.6s; }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .section {
+            background: white;
+            margin: 40px 0;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            animation: fadeIn 1s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #667eea;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        .bio {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .bio-img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .bio-img:hover {
+            transform: scale(1.05);
+        }
+
+        .bio-text {
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .movie-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .movie-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 25px;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .movie-card::before {
+            content: '🎬';
+            position: absolute;
+            font-size: 60px;
+            opacity: 0.1;
+            right: -5px;
+            bottom: -10px;
+        }
+
+        .movie-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .movie-year {
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .movie-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .movie-role {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 5px;
+            font-style: italic;
+        }
+
+        .movie-badge {
+            display: inline-block;
+            background: linear-gradient(90deg, #e74c3c, #c0392b);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            margin-top: 8px;
+            font-weight: 600;
+        }
+
+        .movie-badge.child {
+            background: linear-gradient(90deg, #3498db, #2980b9);
+        }
+
+        .movie-badge.dual {
+            background: linear-gradient(90deg, #9b59b6, #8e44ad);
+        }
+
+        .movie-badge.cameo {
+            background: linear-gradient(90deg, #f39c12, #e67e22);
+        }
+
+        .awards-list {
+            display: grid;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .award-item {
+            background: linear-gradient(90deg, #FFD700, #FFA500);
+            padding: 25px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .award-item:hover {
+            transform: translateX(10px);
+        }
+
+        .award-icon {
+            font-size: 3rem;
+        }
+
+        .award-details h3 {
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .award-details p {
+            color: #555;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .politics-section {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 50px;
+            border-radius: 20px;
+        }
+
+        .politics-content {
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 30px 0;
+        }
+
+        .timeline-item {
+            padding: 20px 30px;
+            background: white;
+            border-radius: 10px;
+            margin: 20px 0;
+            margin-left: 40px;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -40px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            background: #667eea;
+            border-radius: 50%;
+            border: 4px solid white;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .gallery-img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .gallery-img:hover {
+            transform: scale(1.05);
+        }
+
+        .songs-timeline {
+            display: grid;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .song-decade {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 15px 30px;
+            border-radius: 10px;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .songs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .song-card {
+            background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+            padding: 20px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .song-card::before {
+            content: '♪';
+            position: absolute;
+            font-size: 80px;
+            color: rgba(255,255,255,0.2);
+            right: -10px;
+            bottom: -20px;
+            transform: rotate(-15deg);
+        }
+
+        .song-card:hover {
+            transform: translateY(-5px) rotate(1deg);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+        }
+
+        .song-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #2d3436;
+            margin-bottom: 8px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .song-movie {
+            font-size: 1rem;
+            color: #636e72;
+            margin-bottom: 5px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .song-year {
+            font-size: 0.9rem;
+            color: #b2bec3;
+            position: relative;
+            z-index: 1;
+        }
+
+        .song-award {
+            background: linear-gradient(90deg, #e74c3c, #c0392b);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            display: inline-block;
+            margin-top: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .singing-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .singing-stat-card {
+            background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .singing-stat-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .singing-stat-card h3 {
+            font-size: 2.5rem;
+            color: #2d3436;
+            margin-bottom: 10px;
+        }
+
+        .singing-stat-card p {
+            color: #636e72;
+            font-weight: 500;
+        }
+
+        .composer-badge {
+            display: inline-block;
+            background: rgba(102, 126, 234, 0.2);
+            color: #667eea;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            margin-top: 5px;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .bio {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 30px 20px;
+            }
+        }
+        
+        .video-link-card {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+    background: #000;
+}
+
+.video-link-card:hover {
+    transform: translateY(-5px);
+}
+
+.video-thumbnail {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    overflow: hidden;
+}
+
+.video-thumbnail img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.play-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 0, 0, 0.8);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.video-link-card:hover .play-overlay {
+    background: rgba(255, 0, 0, 1);
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+.video-link {
+    display: block;
+    text-align: center;
+    padding: 15px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.video-link:hover {
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+}
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="sparkle">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="hero-content">
+            <h1>THALAPATHY VIJAY</h1>
+            <p>Ilaya Thalapathy | The Commander | People's Hero</p>
+            <div class="hero-subtitle">33 Years in Cinema | 75+ Films | Global Icon</div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="section">
+            <h2 class="section-title">About The Legend</h2>
+            <div class="bio">
+                <img src="https://tse3.mm.bing.net/th/id/OIP.n1YXGfDVWROvpu-J2g-Y-gHaNK?pid=ImgDet&w=188&h=333&c=7&dpr=1.3&o=7&rm=3" alt="Vijay" class="bio-img">
+                <div class="bio-text">
+                    <p><strong>Joseph Vijay Chandrasekhar</strong>, known professionally as Vijay, was born on June 22, 1974, in Chennai, Tamil Nadu. He is one of the highest-paid and most popular actors in Tamil cinema, often referred to as "Thalapathy" (Commander) by his fans.</p>
+                    <br>
+                    <p>Son of veteran filmmaker S. A. Chandrasekhar and playback singer Shoba, Vijay started his career as a child artist and made his debut as a lead actor in 1992. Over three decades, he has established himself as a commercial force with numerous blockbusters and has a massive fan following across the globe.</p>
+                    <br>
+                    <p>Known for his dancing skills, charismatic screen presence, and social consciousness, Vijay has become more than just an actor—he's a cultural phenomenon and a voice for social change.</p>
+                </div>
+            </div>
+
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-number">75+</div>
+                    <div>Films (Including Child Actor)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">30+</div>
+                    <div>Awards</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">30+</div>
+                    <div>Years in Cinema</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">100M+</div>
+                    <div>Fans Worldwide</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">🎬 Complete Filmography</h2>
+            <div class="movie-grid" id="movieGrid"></div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">🏆 Awards & Achievements</h2>
+            <div class="awards-list" id="awardsList"></div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">🎤 Vijay as Playback Singer</h2>
+            <div class="bio-text" style="margin-bottom: 30px;">
+                <p>Beyond acting, Vijay is one of the most prolific singers among Tamil actors. He made his singing debut with "Bombay City Sukkha Rotti" in 1994 and has sung over 35+ songs for legendary composers including A.R. Rahman, Ilaiyaraaja, Anirudh Ravichander, and Yuvan Shankar Raja.</p>
+                <br>
+                <p><strong>Career Milestone:</strong> After singing 25 songs, he took a sabbatical in 2005 to focus on acting, but made a spectacular comeback with "Google Google" in Thuppakki (2012), which won Favorite Song of the Year at Vijay Awards!</p>
+                <br>
+                <p><strong>International Fame:</strong> His song "Selfie Pulla" from Kaththi became a viral sensation in Romania and other European countries in 2016, earning him a Filmfare Award nomination for Best Playback Singer.</p>
+            </div>
+
+            <div class="songs-timeline" id="songsTimeline"></div>
+        </div>
+
+        <div class="section">
+    <h2 class="section-title">🎥 Video Gallery</h2>
+    <div class="video-grid">
+        <div class="video-link-card">
+            <div class="video-thumbnail">
+                <img src="https://img.youtube.com/vi/4E_Qynx0GDQ/maxresdefault.jpg" alt="Video 1">
+                <div class="play-overlay">▶</div>
+            </div>
+            <a href="https://youtu.be/4E_Qynx0GDQ?si=4JamJgNhmFH99S7G" target="_blank" class="video-link">Watch on YouTube</a>
+        </div>
+        <div class="video-link-card">
+            <div class="video-thumbnail">
+                <img src="https://img.youtube.com/vi/FKzrsznBqQk/maxresdefault.jpg" alt="Video 2">
+                <div class="play-overlay">▶</div>
+            </div>
+            <a href="https://youtu.be/FKzrsznBqQk?si=d5K7QXvsb3uX2f_o" target="_blank" class="video-link">Watch on YouTube</a>
+        </div>
+        <div class="video-link-card">
+            <div class="video-thumbnail">
+                <img src="https://img.youtube.com/vi/kva2Bz76I9E/maxresdefault.jpg" alt="Video 3">
+                <div class="play-overlay">▶</div>
+            </div>
+            <a href="https://youtu.be/kva2Bz76I9E?si=u7_z7j8D1DL8c3wl" target="_blank" class="video-link">Watch on YouTube</a>
+        </div>
+    </div>
+</div>        
+        <div class="section">
+    <h2 class="section-title">📸 Photo Gallery</h2>
+    <div class="gallery">
+        <img src="https://th.bing.com/th/id/R.e1266d9f67ce5b529a3127b2d5f366c6?rik=aeGvTK8TKO7axw&riu=http%3a%2f%2fstarsunfolded.com%2fwp-content%2fuploads%2f2018%2f02%2fVijay-Childhood.jpg&ehk=MMqqlSWhbCMg4QhuWE9BBaSA2OPaLWsImhScLsGn5No%3d&risl=&pid=ImgRaw&r=0" alt="Vijay 1" class="gallery-img">
+        <img src="https://w0.peakpx.com/wallpaper/184/199/HD-wallpaper-vijay-old-pic-actor-thalapathy.jpg" alt="Vijay 2" class="gallery-img">
+        <img src="https://www.indiaherald.com/ImageStore/images/movies/movies-actors/actor-vijay-unseen-cute-photoshoot-stills-in-orange-tee7.jpg" alt="Vijay 3" class="gallery-img">
+        <img src="https://i.pinimg.com/736x/39/56/34/3956343feab920b59d7e58c7940b7d03.jpg" class="gallery-img">
+        <img src="https://tse2.mm.bing.net/th/id/OIP._GrOWej1sR2au1ZwbDwusQHaNK?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Vijay 5" class="gallery-img">
+        <img src="https://tse2.mm.bing.net/th/id/OIP.w3YVIfSuuDpsnT5lJk5wjAHaLC?w=1024&h=1526&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Vijay 6" class="gallery-img">
+    </div>
+</div>
+        <div class="section politics-section">
+            <h2 class="section-title" style="color: white;">🗳️ Political Journey</h2>
+            <div class="politics-content">
+                <h3 style="margin-bottom: 20px;">Tamilaga Vettri Kazhagam (TVK)</h3>
+                <p>In February 2024, Vijay made a historic announcement by launching his political party, <strong>Tamilaga Vettri Kazhagam (TVK)</strong>, marking his official entry into Tamil Nadu politics. This move came after years of speculation about his political aspirations.</p>
+                
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <h4 style="color: #667eea; margin-bottom: 10px;">February 2, 2024</h4>
+                        <p style="color: #555;">Official announcement of Tamilaga Vettri Kazhagam (TVK) party formation</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4 style="color: #667eea; margin-bottom: 10px;">October 27, 2024</h4>
+                        <p style="color: #555;">First state conference held in Vikravandi, Villupuram district with massive attendance</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4 style="color: #667eea; margin-bottom: 10px;">Party Ideology</h4>
+                        <p style="color: #555;">Secular social justice principles, opposition to divisive forces, emphasis on equality and rationalism</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4 style="color: #667eea; margin-bottom: 10px;">Future Plans</h4>
+                        <p style="color: #555;">Planning to contest Tamil Nadu Assembly elections in 2026</p>
+                    </div>
+                </div>
+
+                <h3 style="margin: 30px 0 20px;">Political Stand & Ideology</h3>
+                <p>Vijay's political stance emphasizes:</p>
+                <ul style="margin: 20px 0; padding-left: 20px; line-height: 2;">
+                    <li><strong>Secularism:</strong> Strongly opposes communalism and divisive politics</li>
+                    <li><strong>Social Justice:</strong> Focus on equality and uplifting marginalized communities</li>
+                    <li><strong>Anti-Corruption:</strong> Commitment to transparent governance</li>
+                    <li><strong>Youth Empowerment:</strong> Special focus on education and employment opportunities</li>
+                    <li><strong>Rationalism:</strong> Inspired by Dravidian ideological principles</li>
+                    <li><strong>Women's Rights:</strong> Strong advocacy for gender equality and women's safety</li>
+                </ul>
+
+                <h3 style="margin: 30px 0 20px;">Social Activism</h3>
+                <p>Even before entering politics formally, Vijay was known for his social consciousness:</p>
+                <ul style="margin: 20px 0; padding-left: 20px; line-height: 2;">
+                    <li>Regular charitable contributions through Vijay Makkal Iyakkam</li>
+                    <li>Educational scholarships for underprivileged students</li>
+                    <li>Disaster relief efforts during floods and COVID-19 pandemic</li>
+                    <li>Support for farmers' welfare and addressing agricultural issues</li>
+                    <li>Advocacy against social evils and corruption through his films</li>
+                </ul>
+
+                <p style="margin-top: 30px; font-size: 1.2rem;"><strong>Vijay announced he would step away from cinema after completing his current commitments to focus entirely on politics, making 2026 a pivotal year for both his cinematic farewell and political debut.</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const movies = [
+            // Child Actor Era (1984-1988)
+            { year: 1984, title: "Vetri", role: "Vijay", type: "Child Actor" },
+            { year: 1984, title: "Kudumbam", role: "Narada", type: "Child Actor" },
+            { year: 1985, title: "Naan Sigappu Manithan", role: "Unnamed", type: "Child Actor" },
+            { year: 1986, title: "Vasantha Raagam", role: "Vijay", type: "Child Actor" },
+            { year: 1987, title: "Sattam Oru Vilayattu", role: "Raja", type: "Child Actor" },
+            { year: 1988, title: "Ithu Engal Neethi", role: "Vijay", type: "Child Actor" },
+            // Lead Actor Era (1992-Present)
+            { year: 1992, title: "Naalaiya Theerpu", role: "Vijay Mehta", note: "Debut as Lead Actor" },
+            { year: 1993, title: "Senthoorapandi", role: "Vijay" },
+            { year: 1994, title: "Rasigan", role: "Vijay" },
+            { year: 1995, title: "Deva", role: "Deva" },
+            { year: 1995, title: "Rajavin Parvaiyile", role: "Raja" },
+            { year: 1995, title: "Vishnu", role: "Vishnu (Krishna)" },
+            { year: 1995, title: "Chandralekha", role: "Rahim Rowther" },
+            { year: 1996, title: "Coimbatore Mappillai", role: "Balu" },
+            { year: 1996, title: "Poove Unakkaga", role: "Raja" },
+            { year: 1996, title: "Vasantha Vaasal", role: "Vijay" },
+            { year: 1996, title: "Maanbumigu Maanavan", role: "Sivaraj" },
+            { year: 1996, title: "Selva", role: "Selvan" },
+            { year: 1997, title: "Kaalamellam Kaathiruppen", role: "Kannan" },
+            { year: 1997, title: "Love Today", role: "Ganesh" },
+            { year: 1997, title: "Once More", role: "Vijay" },
+            { year: 1997, title: "Nerrukku Ner", role: "Vijay" },
+            { year: 1997, title: "Kadhalukku Mariyadhai", role: "Jeevanandham (Jeeva)" },
+            { year: 1998, title: "Ninaithen Vandhai", role: "Gokulakrishnan" },
+            { year: 1998, title: "Priyamudan", role: "Vasanth" },
+            { year: 1998, title: "Nilaave Vaa", role: "Siluvai" },
+            { year: 1999, title: "Thullatha Manamum Thullum", role: "Kutty" },
+            { year: 1999, title: "Endrendrum Kadhal", role: "Vijay" },
+            { year: 1999, title: "Nenjinile", role: "Karunakaran (Karna)" },
+            { year: 1999, title: "Minsara Kanna", role: "Kannan (Kasi)" },
+            { year: 2000, title: "Kannukkul Nilavu", role: "Gautham Prabhakar", note: "25th Film" },
+            { year: 2000, title: "Kushi", role: "Shiva" },
+            { year: 2000, title: "Priyamaanavale", role: "Vijay Vishwanathan" },
+            { year: 2001, title: "Friends", role: "Aravindhan" },
+            { year: 2001, title: "Badri", role: "Sri Badrinatha Moorthy (Badri)" },
+            { year: 2001, title: "Shahjahan", role: "Ashok Ilango" },
+            { year: 2002, title: "Thamizhan", role: "C. J. Surya" },
+            { year: 2002, title: "Youth", role: "Shiva" },
+            { year: 2002, title: "Bagavathi", role: "Bhagavathi" },
+            { year: 2003, title: "Vaseegara", role: "Boopathi" },
+            { year: 2003, title: "Pudhiya Geethai", role: "Sarathy" },
+            { year: 2003, title: "Thirumalai", role: "Thirumalai" },
+            { year: 2004, title: "Udhaya", role: "Udhayakumaran (Udhaya)" },
+            { year: 2004, title: "Ghilli", role: "Saravanavelu (Velu, Ghilli)", note: "Blockbuster Hit" },
+            { year: 2004, title: "Madhurey", role: "Maduravel (Madhurey)" },
+            { year: 2005, title: "Thirupaachi", role: "Sivagiri (Giri)" },
+            { year: 2005, title: "Sukran", role: "Sukran", type: "Extended Cameo" },
+            { year: 2005, title: "Sachein", role: "Sachein" },
+            { year: 2005, title: "Sivakasi", role: "Muthappa (Sivakasi)" },
+            { year: 2006, title: "Aathi", role: "Aathikesavan" },
+            { year: 2007, title: "Pokkiri", role: "Sathyamoorthy (Thamizh)", note: "Blockbuster Hit" },
+            { year: 2007, title: "Azhagiya Tamil Magan", role: "Guru, Prasad", type: "Dual Role" },
+            { year: 2008, title: "Kuruvi", role: "Vetrivel (Velu, Kuruvi)" },
+            { year: 2008, title: "Pandhayam", role: "Himself", type: "Guest Appearance" },
+            { year: 2009, title: "Villu", role: "Pugazh, Saravanan", type: "Dual Role" },
+            { year: 2009, title: "Vettaikaaran", role: "Police Ravi" },
+            { year: 2010, title: "Sura", role: "Sura", note: "50th Film" },
+            { year: 2011, title: "Kaavalan", role: "Bhoominathan" },
+            { year: 2011, title: "Velayudham", role: "Velu (Velayudham)" },
+            { year: 2012, title: "Nanban", role: "Kosaksi Pasapugazh (Panchavan Parivendan)" },
+            { year: 2012, title: "Rowdy Rathore", role: "Himself", type: "Guest Appearance (Hindi Film)" },
+            { year: 2012, title: "Thuppakki", role: "Jagadish Dhanapal", note: "Blockbuster Hit" },
+            { year: 2013, title: "Thalaivaa", role: "Vishwa Ramadorai (Vishwa Bhai)" },
+            { year: 2014, title: "Jilla", role: "DCP Shakthi Aarumugam" },
+            { year: 2014, title: "Kaththi", role: "Kathiresan, Jeevanandham", type: "Dual Role" },
+            { year: 2015, title: "Puli", role: "Marudheeran, Pulivendhan", type: "Dual Role" },
+            { year: 2016, title: "Theri", role: "A. Vijay Kumar (Joseph Kuruvilla, Dharmeshwar)" },
+            { year: 2017, title: "Bairavaa", role: "Bairavaa" },
+            { year: 2017, title: "Mersal", role: "Vetri, Maaran, Vetrimaaran", type: "Triple Role" },
+            { year: 2018, title: "Sarkar", role: "Sundar Ramaswamy" },
+            { year: 2019, title: "Bigil", role: "Michael Rayappan (Bigil), Rayappan", type: "Dual Role" },
+            { year: 2021, title: "Master", role: "JD (John Durairaj)" },
+            { year: 2022, title: "Beast", role: "Veera Raghavan" },
+            { year: 2023, title: "Varisu", role: "Vijay Rajendran" },
+            { year: 2023, title: "Leo", role: "Parthiban/Leo Das" },
+            { year: 2024, title: "The Greatest Of All Time (GOAT)", role: "M.S. Gandhi, Jeevan Gandhi (Sanjay Menon)", type: "Dual Role" },
+            { year: 2026, title: "Jana Nayagan", role: "TBA", note: "Post-production" }
+        ];
+
+        const awards = [
+            { icon: "🏆", title: "Vijay Awards - Favorite Hero", year: "Multiple Years", detail: "Won numerous times for various films" },
+            { icon: "🎖️", title: "Edison Awards - Best Actor", year: "Multiple Years", detail: "Recognition for outstanding performances" },
+            { icon: "🌟", title: "SIIMA Awards - Best Actor", year: "2013, 2014, 2015", detail: "For Thuppakki, Kaththi, and other films" },
+            { icon: "👑", title: "Vikatan Awards - Best Actor", year: "Multiple Years", detail: "People's choice awards" },
+            { icon: "💎", title: "Norway Tamil Film Festival Awards", year: "2018", detail: "Cinema Ratna Award" },
+            { icon: "🎬", title: "Ananda Vikatan Cinema Awards", year: "Multiple Years", detail: "Best Actor and Entertainer" },
+            { icon: "🥇", title: "Behindwoods Gold Medal", year: "Multiple Years", detail: "Best Actor recognition" },
+            { icon: "⭐", title: "India Today Entertainment Award", year: "2019", detail: "Film Personality of the Year" },
+            { icon: "🏅", title: "Zee Cine Awards Tamil", year: "Multiple Years", detail: "Best Actor nominations and wins" },
+            { icon: "🎭", title: "Ananda Vikatan Best Actor", year: "2023", detail: "For Leo" },
+            { icon: "🎤", title: "Vijay Awards - Favorite Song", year: "2012", detail: "Won for 'Google Google' from Thuppakki" },
+            { icon: "🎵", title: "SIIMA Nomination - Best Playback Singer", year: "2013", detail: "For 'Google Google'" },
+            { icon: "🎶", title: "Filmfare Award Nomination", year: "2015, 2016", detail: "Best Playback Singer for 'Yaendi Yaendi' and 'Selfie Pulla'" }
+        ];
+
+        const songs = {
+            "1990s": [
+                { title: "Bombay City Sukkha Rotti", movie: "Rasigan", year: "1994", composer: "Deva", note: "Singing Debut" },
+                { title: "Oru Kaditham", movie: "Deva", year: "1995", composer: "S. P. Balasubrahmanyam" },
+                { title: "Aiyaiyoo Alamelu", movie: "Deva", year: "1995", composer: "Deva" },
+                { title: "Kottagiri Kuppamma", movie: "Deva", year: "1995", composer: "Deva" },
+                { title: "Thottabettaa Rottu Melae", movie: "Vishnu", year: "1995", composer: "Vidyasagar" },
+                { title: "Bombay Party Shilpa Shetty", movie: "Coimbatore Mappillai", year: "1996", composer: "Vidyasagar" },
+                { title: "Thiruppathy Ponaa Mottai", movie: "Maanbumigu Maanavan", year: "1996", composer: "Deva" },
+                { title: "Chicken Kari", movie: "Selva", year: "1996", composer: "Sirpy" },
+                { title: "Anjaam Number Bussil Yeri", movie: "Kaalamellam Kaathiruppen", year: "1997", composer: "Deva" },
+                { title: "Oormilaa Oormilaa", movie: "Once More", year: "1997", composer: "Deva" },
+                { title: "Oh Baby Baby", movie: "Kadhalukku Mariyadhai", year: "1997", composer: "Ilaiyaraaja" },
+                { title: "Mowriya Mowriya", movie: "Priyamudan", year: "1998", composer: "Deva" },
+                { title: "Kaalathuketha Oru Gana", movie: "Velai", year: "1998", composer: "Yuvan Shankar Raja" },
+                { title: "Nilave Nilave", movie: "Nilaave Vaa", year: "1998", composer: "Vidyasagar" },
+                { title: "Chandira Mandalathai", movie: "Nilaave Vaa", year: "1998", composer: "Vidyasagar" },
+                { title: "Thammadikkira Styla Pathu", movie: "Periyanna", year: "1999", composer: "S. Bharani" },
+                { title: "Juddadi Laila", movie: "Periyanna", year: "1999", composer: "S. Bharani" },
+                { title: "Roadula Oru", movie: "Periyanna", year: "1999", composer: "S. Bharani" },
+                { title: "Thanga Nirathuku", movie: "Nenjinile", year: "1999", composer: "Deva" }
+            ],
+            "2000s": [
+                { title: "Mississippi Nadhi Kulunga", movie: "Priyamaanavale", year: "2000", composer: "S. A. Rajkumar" },
+                { title: "Ennoda Laila", movie: "Badri", year: "2001", composer: "Ramana Gogula" },
+                { title: "Ullathai Killadhae", movie: "Thamizhan", year: "2002", composer: "D. Imman" },
+                { title: "Coca-Cola (Podango)", movie: "Bagavathi", year: "2002", composer: "Srikanth Deva" },
+                { title: "Vaadi Vaadi CD", movie: "Sachein", year: "2005", composer: "Devi Sri Prasad", note: "Last song before break" }
+            ],
+            "2010s": [
+                { title: "Google Google", movie: "Thuppakki", year: "2012", composer: "Harris Jayaraj", award: "Won Vijay Award! Comeback Hit" },
+                { title: "Vanganna Vanakkanganna", movie: "Thalaivaa", year: "2013", composer: "G. V. Prakash Kumar" },
+                { title: "Kandangi Kandangi", movie: "Jilla", year: "2014", composer: "D. Imman" },
+                { title: "Selfie Pulla", movie: "Kaththi", year: "2014", composer: "Anirudh Ravichander", award: "International Hit in Romania!" },
+                { title: "Bad Eyes – Villain Theme", movie: "Kaththi", year: "2014", composer: "Anirudh Ravichander" },
+                { title: "Yaendi Yaendi", movie: "Puli", year: "2015", composer: "Devi Sri Prasad", award: "Filmfare Nomination" },
+                { title: "Chella Kutti", movie: "Theri", year: "2016", composer: "G. V. Prakash Kumar" },
+                { title: "Papa Papa", movie: "Bairavaa", year: "2017", composer: "Santhosh Narayanan" },
+                { title: "Verithanam", movie: "Bigil", year: "2019", composer: "A. R. Rahman" }
+            ],
+            "2020s": [
+                { title: "Kutti Story", movie: "Master", year: "2021", composer: "Anirudh Ravichander", award: "Filmfare Nomination" },
+                { title: "Jolly O Gymkhana", movie: "Beast", year: "2022", composer: "Anirudh Ravichander" },
+                { title: "Ranjithame", movie: "Varisu", year: "2023", composer: "Thaman S" },
+                { title: "Naa Ready", movie: "Leo", year: "2023", composer: "Anirudh Ravichander" },
+                { title: "Whistle Podu", movie: "The GOAT", year: "2024", composer: "Yuvan Shankar Raja" },
+                { title: "Whistle Podu Theatrical", movie: "The GOAT", year: "2024", composer: "Yuvan Shankar Raja" },
+                { title: "Chinna Chinna Kangal", movie: "The GOAT", year: "2024", composer: "Yuvan Shankar Raja" },
+                { title: "Unga Vijay Na Varen", movie: "TVK Political Song", year: "2025", composer: "S. Thaman", award: "Latest Release!" },
+                { title: "Thalapathy Kacheri", movie: "Jana Nayagan", year: "2026", composer: "Anirudh Ravichander", note: "Latest Release!" },
+                { title: "En Chella Magalae", movie: "Jana Nayagan", year: "2026", composer: "Anirudh Ravichander", note: "Latest Release!" }
+
+            ]
+        };
+
+        const movieGrid = document.getElementById('movieGrid');
+        movies.reverse().forEach(movie => {
+            const card = document.createElement('div');
+            card.className = 'movie-card';
+            
+            let badgeHTML = '';
+            if (movie.type === 'Child Actor') {
+                badgeHTML = '<div class="movie-badge child">Child Actor</div>';
+            } else if (movie.type === 'Dual Role') {
+                badgeHTML = '<div class="movie-badge dual">Dual Role</div>';
+            } else if (movie.type === 'Triple Role') {
+                badgeHTML = '<div class="movie-badge dual">Triple Role</div>';
+            } else if (movie.type === 'Extended Cameo' || movie.type === 'Guest Appearance' || movie.type === 'Guest Appearance (Hindi Film)') {
+                badgeHTML = '<div class="movie-badge cameo">Guest</div>';
+            } else if (movie.note) {
+                badgeHTML = `<div class="movie-badge">${movie.note}</div>`;
+            }
+            
+            card.innerHTML = `
+                <div class="movie-year">${movie.year}</div>
+                <div class="movie-title">${movie.title}</div>
+                <div class="movie-role">as ${movie.role}</div>
+                ${badgeHTML}
+            `;
+            movieGrid.appendChild(card);
+        });
+
+        const awardsList = document.getElementById('awardsList');
+        awards.forEach(award => {
+            const item = document.createElement('div');
+            item.className = 'award-item';
+            item.innerHTML = `
+                <div class="award-icon">${award.icon}</div>
+                <div class="award-details">
+                    <h3>${award.title}</h3>
+                    <p><strong>${award.year}</strong> - ${award.detail}</p>
+                </div>
+            `;
+            awardsList.appendChild(item);
+        });
+
+        // Populate Songs Timeline
+        const songsTimeline = document.getElementById('songsTimeline');
+        
+        // Add singing stats first
+        const statsDiv = document.createElement('div');
+        statsDiv.className = 'singing-stats';
+        statsDiv.innerHTML = `
+            <div class="singing-stat-card">
+                <h3>42+</h3>
+                <p>Total Songs Sung</p>
+            </div>
+            <div class="singing-stat-card">
+                <h3>1994</h3>
+                <p>Singing Debut</p>
+            </div>
+            <div class="singing-stat-card">
+                <h3>2005-2012</h3>
+                <p>7-Year Break</p>
+            </div>
+            <div class="singing-stat-card">
+                <h3>5</h3>
+                <p>Award Nominations</p>
+            </div>
+        `;
+        songsTimeline.appendChild(statsDiv);
+
+        // Add songs by decade
+        Object.keys(songs).forEach(decade => {
+            const decadeHeader = document.createElement('div');
+            decadeHeader.className = 'song-decade';
+            decadeHeader.textContent = decade;
+            songsTimeline.appendChild(decadeHeader);
+
+            const songsGrid = document.createElement('div');
+            songsGrid.className = 'songs-grid';
+
+            songs[decade].forEach(song => {
+                const songCard = document.createElement('div');
+                songCard.className = 'song-card';
+                songCard.innerHTML = `
+                    <div class="song-title">${song.title}</div>
+                    <div class="song-movie">${song.movie}</div>
+                    <div class="song-year">${song.year}</div>
+                    ${song.composer ? `<div class="composer-badge">🎵 ${song.composer}</div>` : ''}
+                    ${song.award ? `<div class="song-award">⭐ ${song.award}</div>` : ''}
+                    ${song.note ? `<div class="song-award" style="background: linear-gradient(90deg, #3498db, #2980b9);">💫 ${song.note}</div>` : ''}
+                `;
+                songsGrid.appendChild(songCard);
+            });
+
+            songsTimeline.appendChild(songsGrid);
+        });
+    </script>
+</body>
+</html>
